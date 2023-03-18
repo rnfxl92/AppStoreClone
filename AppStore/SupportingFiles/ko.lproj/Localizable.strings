@@ -6,4 +6,8 @@
   
 */
 
-"Search" = "검색";
+"search.title" = "검색";
+"today.title" = "투데이";
+"app.title" = "앱";
+"arcade.title" = "Arcade";
+"game.title" = "게임";

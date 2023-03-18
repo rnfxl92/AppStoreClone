@@ -6,4 +6,8 @@
   
 */
 
-"Search" = "Search";
+"search.title" = "Search";
+"today.title" = "Today";
+"app.title" = "App";
+"arcade.title" = "Arcade";
+"game.title" = "Game";
