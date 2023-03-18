@@ -13,8 +13,6 @@
 		069D6EF629C54FD900DF1FE2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 069D6EF829C54FD900DF1FE2 /* Localizable.strings */; };
 		069D6EFC29C562EE00DF1FE2 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D6EFB29C562EE00DF1FE2 /* String+.swift */; };
 		069D6EFE29C5632900DF1FE2 /* Collection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D6EFD29C5632900DF1FE2 /* Collection+.swift */; };
-		069D6F0129C56B0900DF1FE2 /* GatewayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D6EFF29C56B0900DF1FE2 /* GatewayViewController.swift */; };
-		069D6F0229C56B0900DF1FE2 /* GatewayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 069D6F0029C56B0900DF1FE2 /* GatewayViewController.xib */; };
 		069D6F0429C56B9600DF1FE2 /* NibInitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D6F0329C56B9600DF1FE2 /* NibInitable.swift */; };
 		069D6F0629C56BC400DF1FE2 /* AnyBudleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D6F0529C56BC400DF1FE2 /* AnyBudleable.swift */; };
 		069D6F0929C56FEF00DF1FE2 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D6F0829C56FEF00DF1FE2 /* TabBarItem.swift */; };
@@ -29,6 +27,7 @@
 		069D6F2329C57DF800DF1FE2 /* ArcadeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 069D6F2129C57DF800DF1FE2 /* ArcadeViewController.xib */; };
 		069D6F2629C57E0800DF1FE2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D6F2429C57E0800DF1FE2 /* SearchViewController.swift */; };
 		069D6F2729C57E0800DF1FE2 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 069D6F2529C57E0800DF1FE2 /* SearchViewController.xib */; };
+		069D6F2C29C591CF00DF1FE2 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D6F2B29C591CF00DF1FE2 /* SearchResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,8 +40,6 @@
 		069D6EF929C561C100DF1FE2 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		069D6EFB29C562EE00DF1FE2 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		069D6EFD29C5632900DF1FE2 /* Collection+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+.swift"; sourceTree = "<group>"; };
-		069D6EFF29C56B0900DF1FE2 /* GatewayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatewayViewController.swift; sourceTree = "<group>"; };
-		069D6F0029C56B0900DF1FE2 /* GatewayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GatewayViewController.xib; sourceTree = "<group>"; };
 		069D6F0329C56B9600DF1FE2 /* NibInitable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibInitable.swift; sourceTree = "<group>"; };
 		069D6F0529C56BC400DF1FE2 /* AnyBudleable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyBudleable.swift; sourceTree = "<group>"; };
 		069D6F0829C56FEF00DF1FE2 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
@@ -57,6 +54,7 @@
 		069D6F2129C57DF800DF1FE2 /* ArcadeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArcadeViewController.xib; sourceTree = "<group>"; };
 		069D6F2429C57E0800DF1FE2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		069D6F2529C57E0800DF1FE2 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		069D6F2B29C591CF00DF1FE2 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,11 +87,10 @@
 		069D6EDE29C547C400DF1FE2 /* AppStore */ = {
 			isa = PBXGroup;
 			children = (
+				069D6F2829C581A800DF1FE2 /* Network */,
 				069D6F0729C56FAE00DF1FE2 /* Modules */,
 				069D6EFA29C562D900DF1FE2 /* Extensions */,
 				069D6EDF29C547C400DF1FE2 /* AppDelegate.swift */,
-				069D6EFF29C56B0900DF1FE2 /* GatewayViewController.swift */,
-				069D6F0029C56B0900DF1FE2 /* GatewayViewController.xib */,
 				069D6EF329C54F6600DF1FE2 /* SupportingFiles */,
 				069D6EEA29C547C400DF1FE2 /* LaunchScreen.storyboard */,
 				069D6EED29C547C400DF1FE2 /* Info.plist */,
@@ -188,6 +185,22 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		069D6F2829C581A800DF1FE2 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				069D6F2A29C591BE00DF1FE2 /* Model */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		069D6F2A29C591BE00DF1FE2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				069D6F2B29C591CF00DF1FE2 /* SearchResult.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -255,7 +268,6 @@
 				069D6F2729C57E0800DF1FE2 /* SearchViewController.xib in Resources */,
 				069D6EF629C54FD900DF1FE2 /* Localizable.strings in Resources */,
 				069D6EE929C547C400DF1FE2 /* Assets.xcassets in Resources */,
-				069D6F0229C56B0900DF1FE2 /* GatewayViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,11 +285,11 @@
 				069D6F1E29C57DEB00DF1FE2 /* AppViewController.swift in Sources */,
 				069D6F0C29C57B9700DF1FE2 /* MainTabBarController.swift in Sources */,
 				069D6EFC29C562EE00DF1FE2 /* String+.swift in Sources */,
+				069D6F2C29C591CF00DF1FE2 /* SearchResult.swift in Sources */,
 				069D6F0429C56B9600DF1FE2 /* NibInitable.swift in Sources */,
 				069D6F2629C57E0800DF1FE2 /* SearchViewController.swift in Sources */,
 				069D6F2229C57DF800DF1FE2 /* ArcadeViewController.swift in Sources */,
 				069D6F0929C56FEF00DF1FE2 /* TabBarItem.swift in Sources */,
-				069D6F0129C56B0900DF1FE2 /* GatewayViewController.swift in Sources */,
 				069D6F0629C56BC400DF1FE2 /* AnyBudleable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
