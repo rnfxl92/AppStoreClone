@@ -28,6 +28,15 @@
 		069D6F2629C57E0800DF1FE2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D6F2429C57E0800DF1FE2 /* SearchViewController.swift */; };
 		069D6F2729C57E0800DF1FE2 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 069D6F2529C57E0800DF1FE2 /* SearchViewController.xib */; };
 		069D6F2C29C591CF00DF1FE2 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D6F2B29C591CF00DF1FE2 /* SearchResult.swift */; };
+		069D6F3029C59F5800DF1FE2 /* SearchHistoryAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D6F2F29C59F5800DF1FE2 /* SearchHistoryAdapter.swift */; };
+		069D6F3429C5A2B100DF1FE2 /* SearchHistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D6F3229C5A2B100DF1FE2 /* SearchHistoryCollectionViewCell.swift */; };
+		069D6F3529C5A2B100DF1FE2 /* SearchHistoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 069D6F3329C5A2B100DF1FE2 /* SearchHistoryCollectionViewCell.xib */; };
+		069D6F3729C5A58600DF1FE2 /* Registrable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D6F3629C5A58600DF1FE2 /* Registrable.swift */; };
+		069D6F3929C5A6A500DF1FE2 /* AnyNameable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D6F3829C5A6A500DF1FE2 /* AnyNameable.swift */; };
+		069D6F3C29C5A8EC00DF1FE2 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D6F3A29C5A8EC00DF1FE2 /* SearchResultViewController.swift */; };
+		069D6F3D29C5A8EC00DF1FE2 /* SearchResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 069D6F3B29C5A8EC00DF1FE2 /* SearchResultViewController.xib */; };
+		069D6F4029C5AB7F00DF1FE2 /* EmptyStateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D6F3E29C5AB7F00DF1FE2 /* EmptyStateCollectionViewCell.swift */; };
+		069D6F4129C5AB7F00DF1FE2 /* EmptyStateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 069D6F3F29C5AB7F00DF1FE2 /* EmptyStateCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +64,15 @@
 		069D6F2429C57E0800DF1FE2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		069D6F2529C57E0800DF1FE2 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		069D6F2B29C591CF00DF1FE2 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		069D6F2F29C59F5800DF1FE2 /* SearchHistoryAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryAdapter.swift; sourceTree = "<group>"; };
+		069D6F3229C5A2B100DF1FE2 /* SearchHistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		069D6F3329C5A2B100DF1FE2 /* SearchHistoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHistoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		069D6F3629C5A58600DF1FE2 /* Registrable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registrable.swift; sourceTree = "<group>"; };
+		069D6F3829C5A6A500DF1FE2 /* AnyNameable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyNameable.swift; sourceTree = "<group>"; };
+		069D6F3A29C5A8EC00DF1FE2 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		069D6F3B29C5A8EC00DF1FE2 /* SearchResultViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultViewController.xib; sourceTree = "<group>"; };
+		069D6F3E29C5AB7F00DF1FE2 /* EmptyStateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateCollectionViewCell.swift; sourceTree = "<group>"; };
+		069D6F3F29C5AB7F00DF1FE2 /* EmptyStateCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyStateCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +132,8 @@
 				069D6EFD29C5632900DF1FE2 /* Collection+.swift */,
 				069D6F0329C56B9600DF1FE2 /* NibInitable.swift */,
 				069D6F0529C56BC400DF1FE2 /* AnyBudleable.swift */,
+				069D6F3629C5A58600DF1FE2 /* Registrable.swift */,
+				069D6F3829C5A6A500DF1FE2 /* AnyNameable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -179,8 +199,8 @@
 		069D6F1129C57D3500DF1FE2 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				069D6F2429C57E0800DF1FE2 /* SearchViewController.swift */,
-				069D6F2529C57E0800DF1FE2 /* SearchViewController.xib */,
+				069D6F2D29C5981E00DF1FE2 /* SearchMain */,
+				069D6F2E29C5983000DF1FE2 /* SearchResult */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -199,6 +219,37 @@
 				069D6F2B29C591CF00DF1FE2 /* SearchResult.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		069D6F2D29C5981E00DF1FE2 /* SearchMain */ = {
+			isa = PBXGroup;
+			children = (
+				069D6F3129C5A1F400DF1FE2 /* Views */,
+				069D6F2429C57E0800DF1FE2 /* SearchViewController.swift */,
+				069D6F2529C57E0800DF1FE2 /* SearchViewController.xib */,
+				069D6F2F29C59F5800DF1FE2 /* SearchHistoryAdapter.swift */,
+			);
+			path = SearchMain;
+			sourceTree = "<group>";
+		};
+		069D6F2E29C5983000DF1FE2 /* SearchResult */ = {
+			isa = PBXGroup;
+			children = (
+				069D6F3A29C5A8EC00DF1FE2 /* SearchResultViewController.swift */,
+				069D6F3B29C5A8EC00DF1FE2 /* SearchResultViewController.xib */,
+			);
+			path = SearchResult;
+			sourceTree = "<group>";
+		};
+		069D6F3129C5A1F400DF1FE2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				069D6F3229C5A2B100DF1FE2 /* SearchHistoryCollectionViewCell.swift */,
+				069D6F3329C5A2B100DF1FE2 /* SearchHistoryCollectionViewCell.xib */,
+				069D6F3E29C5AB7F00DF1FE2 /* EmptyStateCollectionViewCell.swift */,
+				069D6F3F29C5AB7F00DF1FE2 /* EmptyStateCollectionViewCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +315,9 @@
 				069D6F1529C57DB600DF1FE2 /* TodayViewController.xib in Resources */,
 				069D6EEC29C547C400DF1FE2 /* LaunchScreen.storyboard in Resources */,
 				069D6F1F29C57DEB00DF1FE2 /* AppViewController.xib in Resources */,
+				069D6F3529C5A2B100DF1FE2 /* SearchHistoryCollectionViewCell.xib in Resources */,
+				069D6F3D29C5A8EC00DF1FE2 /* SearchResultViewController.xib in Resources */,
+				069D6F4129C5AB7F00DF1FE2 /* EmptyStateCollectionViewCell.xib in Resources */,
 				069D6F1B29C57DE000DF1FE2 /* GameViewController.xib in Resources */,
 				069D6F2729C57E0800DF1FE2 /* SearchViewController.xib in Resources */,
 				069D6EF629C54FD900DF1FE2 /* Localizable.strings in Resources */,
@@ -278,12 +332,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				069D6F3729C5A58600DF1FE2 /* Registrable.swift in Sources */,
 				069D6F1A29C57DE000DF1FE2 /* GameViewController.swift in Sources */,
+				069D6F3929C5A6A500DF1FE2 /* AnyNameable.swift in Sources */,
 				069D6EFE29C5632900DF1FE2 /* Collection+.swift in Sources */,
+				069D6F3029C59F5800DF1FE2 /* SearchHistoryAdapter.swift in Sources */,
+				069D6F4029C5AB7F00DF1FE2 /* EmptyStateCollectionViewCell.swift in Sources */,
 				069D6EE029C547C400DF1FE2 /* AppDelegate.swift in Sources */,
 				069D6F1429C57DB600DF1FE2 /* TodayViewController.swift in Sources */,
+				069D6F3429C5A2B100DF1FE2 /* SearchHistoryCollectionViewCell.swift in Sources */,
 				069D6F1E29C57DEB00DF1FE2 /* AppViewController.swift in Sources */,
 				069D6F0C29C57B9700DF1FE2 /* MainTabBarController.swift in Sources */,
+				069D6F3C29C5A8EC00DF1FE2 /* SearchResultViewController.swift in Sources */,
 				069D6EFC29C562EE00DF1FE2 /* String+.swift in Sources */,
 				069D6F2C29C591CF00DF1FE2 /* SearchResult.swift in Sources */,
 				069D6F0429C56B9600DF1FE2 /* NibInitable.swift in Sources */,

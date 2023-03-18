@@ -43,6 +43,5 @@ enum TabBarItem: Int, CaseIterable {
             return "search.title".localized()
         }
     }
-    
-    
+
 }

@@ -6,8 +6,15 @@
   
 */
 
+//MARK: Tabbar title
 "search.title" = "Search";
 "today.title" = "Today";
 "app.title" = "App";
 "arcade.title" = "Arcade";
 "game.title" = "Game";
+
+
+//MARK: SearchVC
+"search.placeholder" = "Game, App, Story";
+"search.empty" = "검색 결과가 없습니다.";
+"search.history_empty" = "검색 내역이 없습니다.";
