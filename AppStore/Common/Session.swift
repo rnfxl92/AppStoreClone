@@ -19,14 +19,14 @@ final class Session {
         return userDefaults
     }
     
-    func getRecentKeywords() -> [KeywordModel]? {
+    func getRecentSearchKeywords() -> [KeywordModel]? {
         if let data = UserDefaults.standard.value(forKey: recentKeywordsKey) as? Data {
             return try? PropertyListDecoder().decode([KeywordModel].self, from: data)
         }
         return nil
     }
     
-    func setRecentKeywords(_ keywords: [KeywordModel]) {
+    func setRecentSearchKeywords(_ keywords: [KeywordModel]) {
         UserDefaults.standard.set(try? PropertyListEncoder().encode(keywords), forKey: recentKeywordsKey)
     }
     

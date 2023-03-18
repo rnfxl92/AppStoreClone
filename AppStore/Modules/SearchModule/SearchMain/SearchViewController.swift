@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Combine
 
 final class SearchViewController: UIViewController {
-    private let searchResultViewController = SearchResultViewController.initFromNib()
-    private lazy var recentSearchAdapter = RecentSearchAdapter(dataProvider: nil, delegate: self)
     
+    private let searchResultViewController = SearchResultViewController.initFromNib()
+    private let viewModel = SearchViewModel()
+    private lazy var recentSearchAdapter = RecentSearchAdapter(dataProvider: viewModel, delegate: self)
     private lazy var searchController: UISearchController = {
         var searchController = UISearchController(searchResultsController: searchResultViewController)
 //        searchResultVC.detailAppDelegate = self
@@ -20,6 +22,7 @@ final class SearchViewController: UIViewController {
         searchController.searchBar.delegate = self
         return searchController
     }()
+    private var cancellables = Set<AnyCancellable>()
     
     @IBOutlet private weak var recentSearchCollectionView: UICollectionView!
     
@@ -36,6 +39,8 @@ private extension SearchViewController {
     func setupView() {
         setupNavigationBar()
         recentSearchAdapter.setRequirements(recentSearchCollectionView)
+        bind()
+        viewModel.getRecentKeywords()
     }
     
     func setupNavigationBar() {
@@ -44,6 +49,17 @@ private extension SearchViewController {
         navigationItem.searchController = searchController
     }
     
+    func bind() {
+       
+        
+    }
+    
+    func render(_ state: SearchViewModel.ViewState) {
+        switch state {
+        case .reloadCollectionView:
+            recentSearchCollectionView.reloadData()
+        }
+    }
 }
 
 extension SearchViewController: RecentSearchAdapterDelegate {
@@ -53,27 +69,17 @@ extension SearchViewController: RecentSearchAdapterDelegate {
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchText = searchBar.text else {
-            return
-        }
-//        updateSearchHistory(query: searchText)
-//        searchResultVC.searchItems(searchText: searchText)
+        searchBar.resignFirstResponder()
+        guard let keyword = searchBar.text
+        , keyword.trimmingCharacters(in: .whitespacesAndNewlines).isNotEmpty else { return }
+
+        viewModel.setRecentKeywords(keyword)
     }
     
-    func updateSearchHistory(query: String) {
-//        if let row = searchHistory.firstIndex(of: query) {
-//            searchHistory.remove(at: row)
-//        }
-//
-//        if searchHistory.count >= 10 {
-//            searchHistory.removeLast()
-//        }
-//
-//        searchHistory.insert(query, at: 0)
-//
-//        UserDefaults.standard.set(searchHistory, forKey: historyQuerys)
-//        historyCollectionView.reloadData()
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.searchText.send(searchText)
     }
+    
 }
 
 extension SearchViewController: UISearchControllerDelegate {

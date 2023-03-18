@@ -7,15 +7,15 @@
 
 import Foundation
 
-final class RecentKeywordManager {
+final class RecentSearchKeywordManager {
     
-    static let shared: RecentKeywordManager = RecentKeywordManager()
+    static let shared: RecentSearchKeywordManager = RecentSearchKeywordManager()
     private let maxKeywordLimit: Int = 100
     
     private init() {}
     
-    func getRecentKeywords() -> [KeywordModel] {
-        if var array = Session.shared.getRecentKeywords() {
+    func getKeywords() -> [KeywordModel] {
+        if var array = Session.shared.getRecentSearchKeywords() {
             array.sort {
                 (obj1, obj2) -> Bool in
                 return obj1.saveTimeInMills > obj2.saveTimeInMills
@@ -25,8 +25,8 @@ final class RecentKeywordManager {
         return []
     }
  
-    func addRecentKeyword(_ keyword: String) {
-        var keywords: [KeywordModel] = getRecentKeywords()
+    func addKeyword(_ keyword: String) {
+        var keywords: [KeywordModel] = getKeywords()
         keywords.removeAll(where: { $0.keyword == keyword })
         
         let keywordObj = KeywordModel(keyword: keyword, saveTimeInMills: Date().timeStamp)
@@ -34,11 +34,11 @@ final class RecentKeywordManager {
         if keywords.count > maxKeywordLimit {
             keywords.removeLast()
         }
-        Session.shared.setRecentKeywords(keywords)
+        Session.shared.setRecentSearchKeywords(keywords)
     }
     
-    func removeRecentKeyword(_ keywordToRemove: String, completion: ((_ success: Bool) -> Void)?) {
-        if var keywords = Session.shared.getRecentKeywords() {
+    func removeKeyword(_ keywordToRemove: String, completion: ((_ success: Bool) -> Void)?) {
+        if var keywords = Session.shared.getRecentSearchKeywords() {
             keywords.removeAll(where: { $0.keyword == keywordToRemove })
             completion?(true)
         } else {
@@ -47,7 +47,7 @@ final class RecentKeywordManager {
     }
     
     func removeAllRecentKeyword(completion: (() -> Void)?) {
-        Session.shared.setRecentKeywords([])
+        Session.shared.setRecentSearchKeywords([])
         completion?()
     }
 }

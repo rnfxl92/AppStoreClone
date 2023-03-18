@@ -12,7 +12,7 @@ protocol RecentSearchAdapterDelegate: AnyObject {
 }
 
 protocol RecentSearchAdapterDataProvider: AnyObject {
-    var recentSearchKeywords: [KeywordModel] { get }
+    var recentKeywords: [KeywordModel] { get }
 }
 
 final class RecentSearchAdapter: NSObject {
@@ -41,13 +41,13 @@ extension RecentSearchAdapter: UICollectionViewDelegate {
 
 extension RecentSearchAdapter: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataProvider?.recentSearchKeywords.count ?? 1
+        return dataProvider?.recentKeywords.count ?? 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let dataProvider,
-              dataProvider.recentSearchKeywords.isNotEmpty
+              dataProvider.recentKeywords.isNotEmpty
         else {
             guard let cell = collectionView
                 .dequeueReusableCell(
@@ -67,7 +67,13 @@ extension RecentSearchAdapter: UICollectionViewDataSource {
                 for: indexPath) as? SearchHistoryCollectionViewCell else {
             fatalError("Unable to dequeue SearchHistoryCollectionViewCell")
         }
-        // cell.configure
+        if let keyword = dataProvider.recentKeywords[safe: indexPath.item]?.keyword {
+            cell
+                .configure(
+                    history: keyword,
+                    hideDivider: dataProvider.recentKeywords.count - 1 == indexPath.item
+                )
+        }
         
         return cell
     }
@@ -80,7 +86,7 @@ extension RecentSearchAdapter: UICollectionViewDelegateFlowLayout {
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath) -> CGSize {
-            if dataProvider?.recentSearchKeywords.isNotEmpty ?? false {
+            if dataProvider?.recentKeywords.isNotEmpty ?? false {
                 return CGSize(width: collectionView.bounds.width, height: 40)
             } else { // Empty Case
                 return CGSize(width: collectionView.bounds.width, height: 200)
