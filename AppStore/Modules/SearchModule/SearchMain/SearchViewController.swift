@@ -9,7 +9,7 @@ import UIKit
 
 final class SearchViewController: UIViewController {
     private let searchResultViewController = SearchResultViewController.initFromNib()
-    private lazy var searchHistoryAdapter = SearchHistoryAdapter(dataProvider: nil, delegate: self)
+    private lazy var recentSearchAdapter = RecentSearchAdapter(dataProvider: nil, delegate: self)
     
     private lazy var searchController: UISearchController = {
         var searchController = UISearchController(searchResultsController: searchResultViewController)
@@ -21,7 +21,7 @@ final class SearchViewController: UIViewController {
         return searchController
     }()
     
-    @IBOutlet private weak var searchHistoryCollectionView: UICollectionView!
+    @IBOutlet private weak var recentSearchCollectionView: UICollectionView!
     
     
     override func viewDidLoad() {
@@ -35,7 +35,7 @@ final class SearchViewController: UIViewController {
 private extension SearchViewController {
     func setupView() {
         setupNavigationBar()
-        searchHistoryAdapter.setRequirements(searchHistoryCollectionView)
+        recentSearchAdapter.setRequirements(recentSearchCollectionView)
     }
     
     func setupNavigationBar() {
@@ -46,7 +46,7 @@ private extension SearchViewController {
     
 }
 
-extension SearchViewController: SearchHistoryAdapterDelegate {
+extension SearchViewController: RecentSearchAdapterDelegate {
     
 }
 

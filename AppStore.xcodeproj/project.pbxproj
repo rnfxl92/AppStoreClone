@@ -28,7 +28,7 @@
 		069D6F2629C57E0800DF1FE2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D6F2429C57E0800DF1FE2 /* SearchViewController.swift */; };
 		069D6F2729C57E0800DF1FE2 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 069D6F2529C57E0800DF1FE2 /* SearchViewController.xib */; };
 		069D6F2C29C591CF00DF1FE2 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D6F2B29C591CF00DF1FE2 /* SearchResult.swift */; };
-		069D6F3029C59F5800DF1FE2 /* SearchHistoryAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D6F2F29C59F5800DF1FE2 /* SearchHistoryAdapter.swift */; };
+		069D6F3029C59F5800DF1FE2 /* RecentSearchAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D6F2F29C59F5800DF1FE2 /* RecentSearchAdapter.swift */; };
 		069D6F3429C5A2B100DF1FE2 /* SearchHistoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D6F3229C5A2B100DF1FE2 /* SearchHistoryCollectionViewCell.swift */; };
 		069D6F3529C5A2B100DF1FE2 /* SearchHistoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 069D6F3329C5A2B100DF1FE2 /* SearchHistoryCollectionViewCell.xib */; };
 		069D6F3729C5A58600DF1FE2 /* Registrable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D6F3629C5A58600DF1FE2 /* Registrable.swift */; };
@@ -69,7 +69,7 @@
 		069D6F2429C57E0800DF1FE2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		069D6F2529C57E0800DF1FE2 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		069D6F2B29C591CF00DF1FE2 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
-		069D6F2F29C59F5800DF1FE2 /* SearchHistoryAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryAdapter.swift; sourceTree = "<group>"; };
+		069D6F2F29C59F5800DF1FE2 /* RecentSearchAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchAdapter.swift; sourceTree = "<group>"; };
 		069D6F3229C5A2B100DF1FE2 /* SearchHistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		069D6F3329C5A2B100DF1FE2 /* SearchHistoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHistoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		069D6F3629C5A58600DF1FE2 /* Registrable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registrable.swift; sourceTree = "<group>"; };
@@ -240,7 +240,7 @@
 				069D6F3129C5A1F400DF1FE2 /* Views */,
 				069D6F2429C57E0800DF1FE2 /* SearchViewController.swift */,
 				069D6F2529C57E0800DF1FE2 /* SearchViewController.xib */,
-				069D6F2F29C59F5800DF1FE2 /* SearchHistoryAdapter.swift */,
+				069D6F2F29C59F5800DF1FE2 /* RecentSearchAdapter.swift */,
 				069D6F4229C5F76A00DF1FE2 /* SearchViewModel.swift */,
 			);
 			path = SearchMain;
@@ -367,7 +367,7 @@
 				069D6F1A29C57DE000DF1FE2 /* GameViewController.swift in Sources */,
 				069D6F3929C5A6A500DF1FE2 /* AnyNameable.swift in Sources */,
 				069D6EFE29C5632900DF1FE2 /* Collection+.swift in Sources */,
-				069D6F3029C59F5800DF1FE2 /* SearchHistoryAdapter.swift in Sources */,
+				069D6F3029C59F5800DF1FE2 /* RecentSearchAdapter.swift in Sources */,
 				069D6F4029C5AB7F00DF1FE2 /* EmptyStateCollectionViewCell.swift in Sources */,
 				069D6F4329C5F76A00DF1FE2 /* SearchViewModel.swift in Sources */,
 				069D6F4629C5FF6500DF1FE2 /* KeywordModel.swift in Sources */,

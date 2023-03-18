@@ -1,5 +1,5 @@
 //
-//  SearchHistoryAdapter.swift
+//  RecentSearchAdapter.swift
 //  AppStore
 //
 //  Created by 박성민 on 2023/03/18.
@@ -7,20 +7,20 @@
 
 import UIKit
 
-protocol SearchHistoryAdapterDelegate: AnyObject {
+protocol RecentSearchAdapterDelegate: AnyObject {
     
 }
 
-protocol SearchHistoryAdapterDataProvider: AnyObject {
-    var searchHistory: [String] { get }
+protocol RecentSearchAdapterDataProvider: AnyObject {
+    var recentSearchKeywords: [KeywordModel] { get }
 }
 
-final class SearchHistoryAdapter: NSObject {
+final class RecentSearchAdapter: NSObject {
     
-    private weak var dataProvider: SearchHistoryAdapterDataProvider?
-    private weak var delegate: SearchHistoryAdapterDelegate?
+    private weak var dataProvider: RecentSearchAdapterDataProvider?
+    private weak var delegate: RecentSearchAdapterDelegate?
     
-    init(dataProvider: SearchHistoryAdapterDataProvider?, delegate: SearchHistoryAdapterDelegate?) {
+    init(dataProvider: RecentSearchAdapterDataProvider?, delegate: RecentSearchAdapterDelegate?) {
         self.dataProvider = dataProvider
         self.delegate = delegate
     }
@@ -35,19 +35,19 @@ final class SearchHistoryAdapter: NSObject {
     
 }
 
-extension SearchHistoryAdapter: UICollectionViewDelegate {
+extension RecentSearchAdapter: UICollectionViewDelegate {
     
 }
 
-extension SearchHistoryAdapter: UICollectionViewDataSource {
+extension RecentSearchAdapter: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataProvider?.searchHistory.count ?? 1
+        return dataProvider?.recentSearchKeywords.count ?? 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let dataProvider,
-              dataProvider.searchHistory.isNotEmpty
+              dataProvider.recentSearchKeywords.isNotEmpty
         else {
             guard let cell = collectionView
                 .dequeueReusableCell(
@@ -75,12 +75,12 @@ extension SearchHistoryAdapter: UICollectionViewDataSource {
     
 }
 
-extension SearchHistoryAdapter: UICollectionViewDelegateFlowLayout {
+extension RecentSearchAdapter: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath) -> CGSize {
-            if dataProvider?.searchHistory.isNotEmpty ?? false {
+            if dataProvider?.recentSearchKeywords.isNotEmpty ?? false {
                 return CGSize(width: collectionView.bounds.width, height: 40)
             } else { // Empty Case
                 return CGSize(width: collectionView.bounds.width, height: 200)
