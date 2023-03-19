@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchResultViewController" customModule="AppStore" customModuleProvider="target">
             <connections>
+                <outlet property="resultCollectionView" destination="ufE-4E-bFL" id="yRb-hn-553"/>
+                <outlet property="suggestTableView" destination="GGJ-xL-wN4" id="maf-MZ-DcZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,16 +21,33 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Result yo man" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YON-Fh-UoI">
-                    <rect key="frame" x="143" y="298" width="107" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ufE-4E-bFL">
+                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ir4-UY-p0R">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GGJ-xL-wN4">
+                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="GGJ-xL-wN4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="0NR-Pr-Hsf"/>
+                <constraint firstItem="ufE-4E-bFL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="8kF-RI-phS"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ufE-4E-bFL" secondAttribute="trailing" id="C2e-3M-HWQ"/>
+                <constraint firstItem="ufE-4E-bFL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="OPG-Tq-HMK"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="GGJ-xL-wN4" secondAttribute="trailing" id="aHj-Ty-HI1"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ufE-4E-bFL" secondAttribute="bottom" id="e8b-Kf-Hrw"/>
+                <constraint firstItem="GGJ-xL-wN4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mlG-z2-hvt"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="GGJ-xL-wN4" secondAttribute="bottom" id="ytl-6I-PB0"/>
+            </constraints>
             <point key="canvasLocation" x="138" y="20"/>
         </view>
     </objects>

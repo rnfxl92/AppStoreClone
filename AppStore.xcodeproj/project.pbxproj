@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0648701329C73929002A5132 /* RecentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0648701129C73929002A5132 /* RecentHeaderView.swift */; };
+		0648701429C73929002A5132 /* RecentHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0648701229C73929002A5132 /* RecentHeaderView.xib */; };
 		069D6EE029C547C400DF1FE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D6EDF29C547C400DF1FE2 /* AppDelegate.swift */; };
 		069D6EE929C547C400DF1FE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 069D6EE829C547C400DF1FE2 /* Assets.xcassets */; };
 		069D6EEC29C547C400DF1FE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 069D6EEA29C547C400DF1FE2 /* LaunchScreen.storyboard */; };
@@ -58,6 +60,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0648701129C73929002A5132 /* RecentHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentHeaderView.swift; sourceTree = "<group>"; };
+		0648701229C73929002A5132 /* RecentHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecentHeaderView.xib; sourceTree = "<group>"; };
 		069D6EDC29C547C400DF1FE2 /* AppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		069D6EDF29C547C400DF1FE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		069D6EE829C547C400DF1FE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -276,6 +280,8 @@
 				069D6F3329C5A2B100DF1FE2 /* SearchHistoryCollectionViewCell.xib */,
 				069D6F3E29C5AB7F00DF1FE2 /* EmptyStateCollectionViewCell.swift */,
 				069D6F3F29C5AB7F00DF1FE2 /* EmptyStateCollectionViewCell.xib */,
+				0648701129C73929002A5132 /* RecentHeaderView.swift */,
+				0648701229C73929002A5132 /* RecentHeaderView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -378,6 +384,7 @@
 				069D6F1B29C57DE000DF1FE2 /* GameViewController.xib in Resources */,
 				069D6F2729C57E0800DF1FE2 /* SearchViewController.xib in Resources */,
 				069D6EF629C54FD900DF1FE2 /* Localizable.strings in Resources */,
+				0648701429C73929002A5132 /* RecentHeaderView.xib in Resources */,
 				069D6EE929C547C400DF1FE2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,6 +403,7 @@
 				069D6F3029C59F5800DF1FE2 /* RecentSearchAdapter.swift in Sources */,
 				069D6F4029C5AB7F00DF1FE2 /* EmptyStateCollectionViewCell.swift in Sources */,
 				069D6F4329C5F76A00DF1FE2 /* SearchViewModel.swift in Sources */,
+				0648701329C73929002A5132 /* RecentHeaderView.swift in Sources */,
 				069D6F4629C5FF6500DF1FE2 /* KeywordModel.swift in Sources */,
 				069D6EE029C547C400DF1FE2 /* AppDelegate.swift in Sources */,
 				069D6F1429C57DB600DF1FE2 /* TodayViewController.swift in Sources */,

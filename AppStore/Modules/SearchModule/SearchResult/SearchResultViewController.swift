@@ -7,23 +7,26 @@
 
 import UIKit
 
+protocol SuggestedSearch: AnyObject {
+    func didSelectSuggestedSearch(keyword: String)
+    
+    // A product was selected; inform our delgeate that a product was selected to view.
+//    func didSelectProduct(product: Product)
+}
+
 final class SearchResultViewController: UIViewController {
 
+    
+    @IBOutlet private weak var suggestTableView: UITableView!
+    @IBOutlet weak var resultCollectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    weak var suggestedSearchDelegate: SuggestedSearch?
+    
+  
 
 }

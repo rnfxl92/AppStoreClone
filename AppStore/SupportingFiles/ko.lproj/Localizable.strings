@@ -18,3 +18,4 @@
 "search.placeholder" = "게임, 앱, 스토리 등";
 "search.empty" = "검색 결과가 없습니다.";
 "search.history_empty" = "검색 내역이 없습니다.";
+"search.recent_searches" = "최근 검색어";

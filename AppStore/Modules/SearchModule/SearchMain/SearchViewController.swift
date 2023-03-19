@@ -16,6 +16,7 @@ final class SearchViewController: UIViewController {
     private lazy var searchController: UISearchController = {
         var searchController = UISearchController(searchResultsController: searchResultViewController)
 //        searchResultVC.detailAppDelegate = self
+        searchController.searchBar.autocapitalizationType = .none
         searchController.searchBar.placeholder = "search.placeholder".localized()
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.delegate = self
@@ -46,6 +47,7 @@ private extension SearchViewController {
     func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "search.title".localized()
+        navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
     }
     
@@ -83,5 +85,8 @@ extension SearchViewController: UISearchBarDelegate {
 }
 
 extension SearchViewController: UISearchControllerDelegate {
-    
+    func presentSearchController(_ searchController: UISearchController) {
+        searchController.showsSearchResultsController = true
+//        setToSuggestedSearches()
+    }
 }

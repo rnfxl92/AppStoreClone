@@ -31,6 +31,7 @@ final class RecentSearchAdapter: NSObject {
         
         collectionView.registerCellXib(cellClass: SearchHistoryCollectionViewCell.self)
         collectionView.registerCellXib(cellClass: EmptyStateCollectionViewCell.self)
+        collectionView.registerViewXib(viewClass: RecentHeaderView.self, supplement: .header)
     }
     
 }
@@ -78,7 +79,24 @@ extension RecentSearchAdapter: UICollectionViewDataSource {
         return cell
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let supplement = SectionSupplement(rawValue: kind)
+        
+        switch supplement {
+        case .header:
+            guard let header = collectionView
+                .dequeueReusableSupplementaryView(
+                    ofKind: kind,
+                    withReuseIdentifier: RecentHeaderView.className(),
+                    for: indexPath) as?  RecentHeaderView else {
+                fatalError("Unable to dequeue RecentHeaderView")
+            }
+            return header
+        default:
+            return .init()
+        }
+    }
+
 }
 
 extension RecentSearchAdapter: UICollectionViewDelegateFlowLayout {
@@ -91,6 +109,13 @@ extension RecentSearchAdapter: UICollectionViewDelegateFlowLayout {
             } else { // Empty Case
                 return CGSize(width: collectionView.bounds.width, height: 200)
             }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if dataProvider?.recentKeywords.isNotEmpty ?? false {
+            return CGSize(width: collectionView.bounds.width, height: 60)
+        }
+        return .zero
     }
 }
 
