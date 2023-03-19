@@ -8,24 +8,31 @@
 import Foundation
 import Combine
 
-final class SearchViewModel {
+final class SearchViewModel: SearchResultViewModel {
     
     enum ViewState {
         case reloadCollectionView
+        case hideSuggestTableView(isHidden: Bool)
     }
     
     let viewState = PassthroughSubject<ViewState, Never>()
-    let searchText = PassthroughSubject<String, Never>()
+    let searchText = CurrentValueSubject<String, Never>("")
     private let recentSearchKeywords = CurrentValueSubject<[KeywordModel], Never>([])
     
     private var cancellables = Set<AnyCancellable>()
+    
+    init() {
+        bind()
+    }
     
     func getRecentKeywords() {
         recentSearchKeywords.send(RecentSearchKeywordManager.shared.getKeywords())
     }
     
-    func setRecentKeywords(_ keyword: String) {
+    func requestSearch(_ keyword: String) {
         RecentSearchKeywordManager.shared.addKeyword(keyword)
+        // requestSearch
+        viewState.send(.hideSuggestTableView(isHidden: true))
     }
 }
 
@@ -33,6 +40,11 @@ private extension SearchViewModel {
     func bind() {
         recentSearchKeywords.sink { [weak self] _ in
             self?.viewState.send(.reloadCollectionView)
+        }
+        .store(in: &cancellables)
+        
+        searchText.sink { [weak self] _ in
+            self?.viewState.send(.hideSuggestTableView(isHidden: false))
         }
         .store(in: &cancellables)
     }
@@ -44,4 +56,12 @@ extension SearchViewModel: RecentSearchAdapterDataProvider {
     }
 }
 
+extension SearchViewModel: SuggestTableViewAdapterDataProvider {
+    var suggestKeywords: [KeywordModel] {
+        recentSearchKeywords.value.filter { $0.keyword.contains(searchText.value)}
+    }
+}
 
+extension SearchViewModel: SearchResultViewAdapterDataProvider {
+    
+}

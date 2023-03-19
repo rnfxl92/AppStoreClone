@@ -6,27 +6,72 @@
 //
 
 import UIKit
+import Combine
 
-protocol SuggestedSearch: AnyObject {
+protocol SuggestedSearchDelegate: AnyObject {
     func didSelectSuggestedSearch(keyword: String)
+}
+
+protocol SearchResultViewControllerDelegate: AnyObject {
     
-    // A product was selected; inform our delgeate that a product was selected to view.
-//    func didSelectProduct(product: Product)
+}
+
+protocol SearchResultViewModel: AnyObject {
+    var viewState: PassthroughSubject<SearchViewModel.ViewState, Never> { get }
 }
 
 final class SearchResultViewController: UIViewController {
+    
+    static func initialize(viewModel: ViewModel, delegate: Delegates) -> SearchResultViewController? {
+        let vc = SearchResultViewController.initFromNib()
+        vc?.viewModel = viewModel
+        vc?.delegate = delegate
+        
+        return vc
+    }
 
+    typealias Delegates = SuggestedSearchDelegate & SearchResultViewControllerDelegate
+    typealias ViewModel = SuggestTableViewAdapterDataProvider
+    & SearchResultViewAdapterDataProvider
+    & SearchResultViewModel
+    
+    private weak var viewModel: ViewModel?
+    private weak var delegate: Delegates?
+    private var cancellables = Set<AnyCancellable>()
+    private lazy var suggestTableViewAdapter = SuggestTableViewAdapter(delegate: delegate, dataProvider: viewModel)
     
     @IBOutlet private weak var suggestTableView: UITableView!
-    @IBOutlet weak var resultCollectionView: UICollectionView!
+    @IBOutlet private weak var resultCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupView()
+        bind()
     }
 
-    weak var suggestedSearchDelegate: SuggestedSearch?
-    
-  
+}
 
+private extension SearchResultViewController {
+    func setupView() {
+        suggestTableViewAdapter.setRequirements(suggestTableView)
+    }
+    
+    func bind() {
+        viewModel?.viewState.sink { [weak self] state in
+            self?.render(state)
+        }
+        .store(in: &cancellables)
+   
+    }
+    
+    func render(_ viewState: SearchViewModel.ViewState) {
+        switch viewState {
+        case .hideSuggestTableView(let isHidden):
+            suggestTableView.isHidden = isHidden
+            suggestTableView.reloadData()
+        default:
+            break
+        }
+    }
 }

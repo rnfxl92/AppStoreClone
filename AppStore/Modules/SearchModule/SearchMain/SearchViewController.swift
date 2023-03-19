@@ -9,13 +9,12 @@ import UIKit
 import Combine
 
 final class SearchViewController: UIViewController {
-    
-    private let searchResultViewController = SearchResultViewController.initFromNib()
+   
     private let viewModel = SearchViewModel()
+    private lazy var searchResultViewController = SearchResultViewController.initialize(viewModel: viewModel, delegate: self)
     private lazy var recentSearchAdapter = RecentSearchAdapter(dataProvider: viewModel, delegate: self)
     private lazy var searchController: UISearchController = {
         var searchController = UISearchController(searchResultsController: searchResultViewController)
-//        searchResultVC.detailAppDelegate = self
         searchController.searchBar.autocapitalizationType = .none
         searchController.searchBar.placeholder = "search.placeholder".localized()
         searchController.obscuresBackgroundDuringPresentation = false
@@ -32,6 +31,12 @@ final class SearchViewController: UIViewController {
         super.viewDidLoad()
 
         setupView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
     }
     
 }
@@ -52,14 +57,20 @@ private extension SearchViewController {
     }
     
     func bind() {
-       
-        
+        viewModel
+            .viewState
+            .sink {[weak self] state in
+                self?.render(state)
+            }
+            .store(in: &cancellables)
     }
     
     func render(_ state: SearchViewModel.ViewState) {
         switch state {
         case .reloadCollectionView:
             recentSearchCollectionView.reloadData()
+        default:
+            break
         }
     }
 }
@@ -75,18 +86,32 @@ extension SearchViewController: UISearchBarDelegate {
         guard let keyword = searchBar.text
         , keyword.trimmingCharacters(in: .whitespacesAndNewlines).isNotEmpty else { return }
 
-        viewModel.setRecentKeywords(keyword)
+        viewModel.requestSearch(keyword)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.getRecentKeywords()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.searchText.send(searchText)
     }
-    
+     
 }
 
 extension SearchViewController: UISearchControllerDelegate {
     func presentSearchController(_ searchController: UISearchController) {
         searchController.showsSearchResultsController = true
 //        setToSuggestedSearches()
+    }
+}
+
+extension SearchViewController: SearchResultViewControllerDelegate {
+    
+}
+
+extension SearchViewController: SuggestedSearchDelegate {
+    func didSelectSuggestedSearch(keyword: String) {
+        
     }
 }
