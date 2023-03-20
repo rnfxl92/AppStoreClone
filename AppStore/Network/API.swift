@@ -25,6 +25,7 @@ final class API {
         let url = host + path
         let params: Parameters = [
             "media": "software",
+            "entity": "software",
             "country": "search.country".localized(),
             "term" : keyword
         ]

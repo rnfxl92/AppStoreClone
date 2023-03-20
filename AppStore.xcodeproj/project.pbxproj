@@ -13,6 +13,9 @@
 		0648701A29C74DC4002A5132 /* SuggestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0648701829C74DC4002A5132 /* SuggestTableViewCell.swift */; };
 		0648701B29C74DC4002A5132 /* SuggestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0648701929C74DC4002A5132 /* SuggestTableViewCell.xib */; };
 		064AA07229C881AE00AA34A8 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064AA07129C881AE00AA34A8 /* API.swift */; };
+		064AA07529C891A800AA34A8 /* SeachResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064AA07329C891A800AA34A8 /* SeachResultCollectionViewCell.swift */; };
+		064AA07629C891A800AA34A8 /* SeachResultCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 064AA07429C891A800AA34A8 /* SeachResultCollectionViewCell.xib */; };
+		064AA07929C8A22600AA34A8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 064AA07829C8A22600AA34A8 /* SnapKit */; };
 		069D6EE029C547C400DF1FE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D6EDF29C547C400DF1FE2 /* AppDelegate.swift */; };
 		069D6EE929C547C400DF1FE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 069D6EE829C547C400DF1FE2 /* Assets.xcassets */; };
 		069D6EEC29C547C400DF1FE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 069D6EEA29C547C400DF1FE2 /* LaunchScreen.storyboard */; };
@@ -72,6 +75,8 @@
 		0648701829C74DC4002A5132 /* SuggestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestTableViewCell.swift; sourceTree = "<group>"; };
 		0648701929C74DC4002A5132 /* SuggestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestTableViewCell.xib; sourceTree = "<group>"; };
 		064AA07129C881AE00AA34A8 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		064AA07329C891A800AA34A8 /* SeachResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeachResultCollectionViewCell.swift; sourceTree = "<group>"; };
+		064AA07429C891A800AA34A8 /* SeachResultCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SeachResultCollectionViewCell.xib; sourceTree = "<group>"; };
 		069D6EDC29C547C400DF1FE2 /* AppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		069D6EDF29C547C400DF1FE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		069D6EE829C547C400DF1FE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -117,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				064AA07929C8A22600AA34A8 /* SnapKit in Frameworks */,
 				46FDD63329C818C40060A864 /* SDWebImage in Frameworks */,
 				46FDD63629C8191E0060A864 /* Alamofire in Frameworks */,
 			);
@@ -130,6 +136,8 @@
 			children = (
 				0648701829C74DC4002A5132 /* SuggestTableViewCell.swift */,
 				0648701929C74DC4002A5132 /* SuggestTableViewCell.xib */,
+				064AA07329C891A800AA34A8 /* SeachResultCollectionViewCell.swift */,
+				064AA07429C891A800AA34A8 /* SeachResultCollectionViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -354,6 +362,7 @@
 			packageProductDependencies = (
 				46FDD63229C818C40060A864 /* SDWebImage */,
 				46FDD63529C8191E0060A864 /* Alamofire */,
+				064AA07829C8A22600AA34A8 /* SnapKit */,
 			);
 			productName = AppStore;
 			productReference = 069D6EDC29C547C400DF1FE2 /* AppStore.app */;
@@ -387,6 +396,7 @@
 			packageReferences = (
 				46FDD63129C818C40060A864 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				46FDD63429C8191E0060A864 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				064AA07729C8A22600AA34A8 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 069D6EDD29C547C400DF1FE2 /* Products */;
 			projectDirPath = "";
@@ -414,6 +424,7 @@
 				069D6F2729C57E0800DF1FE2 /* SearchViewController.xib in Resources */,
 				069D6EF629C54FD900DF1FE2 /* Localizable.strings in Resources */,
 				0648701429C73929002A5132 /* RecentHeaderView.xib in Resources */,
+				064AA07629C891A800AA34A8 /* SeachResultCollectionViewCell.xib in Resources */,
 				069D6EE929C547C400DF1FE2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,6 +452,7 @@
 				0648701A29C74DC4002A5132 /* SuggestTableViewCell.swift in Sources */,
 				069D6F3429C5A2B100DF1FE2 /* SearchHistoryCollectionViewCell.swift in Sources */,
 				069D6F1E29C57DEB00DF1FE2 /* AppViewController.swift in Sources */,
+				064AA07529C891A800AA34A8 /* SeachResultCollectionViewCell.swift in Sources */,
 				069D6F0C29C57B9700DF1FE2 /* MainTabBarController.swift in Sources */,
 				069D6F3C29C5A8EC00DF1FE2 /* SearchResultViewController.swift in Sources */,
 				069D6EFC29C562EE00DF1FE2 /* String+.swift in Sources */,
@@ -685,6 +697,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		064AA07729C8A22600AA34A8 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = exactVersion;
+				version = 5.6.0;
+			};
+		};
 		46FDD63129C818C40060A864 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
@@ -704,6 +724,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		064AA07829C8A22600AA34A8 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 064AA07729C8A22600AA34A8 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		46FDD63229C818C40060A864 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 46FDD63129C818C40060A864 /* XCRemoteSwiftPackageReference "SDWebImage" */;
