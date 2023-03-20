@@ -12,10 +12,6 @@ protocol SuggestTableViewAdapterDataProvider: AnyObject {
     var suggestKeywords: [KeywordModel] { get }
 }
 
-protocol SearchResultViewAdapterDataProvider: AnyObject {
-    
-}
-
 final class SuggestTableViewAdapter: NSObject {
     
     private weak var delegate: SuggestedSearchDelegate?
@@ -58,6 +54,4 @@ extension SuggestTableViewAdapter: UITableViewDataSource {
             
         return cell
     }
-    
-    
 }

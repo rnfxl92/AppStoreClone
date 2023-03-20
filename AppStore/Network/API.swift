@@ -11,12 +11,7 @@ import Alamofire
 final class API {
     static let shared = API()
     
-    static var itunesURLComponents: URLComponents {
-        var urlComponent = URLComponents()
-        urlComponent.scheme = "https"
-        urlComponent.host = "itunes.apple.com"
-        return urlComponent
-    }
+    private init() { }
     
     //https://itunes.apple.com/search?entity=software&term=
     func search(keyword: String, completion: @escaping (Bool, SearchResultModel?, AFError?) -> Void) {

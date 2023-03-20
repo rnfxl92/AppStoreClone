@@ -9,11 +9,11 @@ import Foundation
 
 struct SearchResultModel: Decodable {
     let resultCount: Int
-    let results: [SearchItemResult]
+    let results: [SearchResultItemModel]
 }
 
 // MARK: - Result
-struct SearchItemResult: Decodable {
+struct SearchResultItemModel: Decodable {
     let screenshotUrls, ipadScreenshotUrls: [String]
     let artworkUrl60, artworkUrl512, artworkUrl100: String
     let artistViewURL: String

@@ -9,12 +9,12 @@ import UIKit
 import SnapKit
 import SDWebImage
 
-final class SeachResultCollectionViewCell: UICollectionViewCell {
+final class SearchResultCollectionViewCell: UICollectionViewCell {
     
     static func calculateCellSize(availableWidth: CGFloat) -> CGSize {
         
-        let infoContainerHeight: CGFloat = 70 // height: 상단 60 + spacing 10
-        let screenShotImageHeight: CGFloat = (availableWidth - 40 - 16) / 3 * 2.25
+        let infoContainerHeight: CGFloat = 80 // height: 상단 60 + spacing 20
+        let screenShotImageHeight: CGFloat = (availableWidth - 40 - 16) / 3 * 19.5 / 9 // 요즘 폰 비율 9 : 19.5
         
         return CGSize(width: floor(availableWidth), height: floor(infoContainerHeight + screenShotImageHeight))
     }
@@ -27,7 +27,7 @@ final class SeachResultCollectionViewCell: UICollectionViewCell {
         let trackName: String // 앱 이름
         let genres: [String] // 서브 타이틀
         let formattedPrice: String
-        let price: Double
+        let price: Double // 가격
         
         var roundedaverageUserRating: Double {
             return (averageUserRating * 2).rounded() / 2 // 0.5 단위로 반올림
@@ -39,9 +39,11 @@ final class SeachResultCollectionViewCell: UICollectionViewCell {
     }
 
     private enum Constant {
-        static let imageCornerRadius: CGFloat = 10
+        static let imageCornerRadius: CGFloat = 12
         static let downloadButtonCornerRadius: CGFloat = 15
         static let starImageWidth: CGFloat = 10
+        static let imageBorderWidth: CGFloat = 1
+        static let imageBorderColor: UIColor = .systemGray5
     }
     
     private lazy var ratingCountLabel: UILabel = {
@@ -86,20 +88,18 @@ final class SeachResultCollectionViewCell: UICollectionViewCell {
 
 }
 
-private extension SeachResultCollectionViewCell {
+private extension SearchResultCollectionViewCell {
     
     func setupView() {
-        appIconImageView.layer.cornerRadius = Constant.imageCornerRadius
-        downloadButton.layer.cornerRadius = Constant.downloadButtonCornerRadius
+        appIconImageView.setBorderStyle(width: Constant.imageBorderWidth, color: Constant.imageBorderColor, radius: Constant.imageCornerRadius)
+        downloadButton.setCornerRadius(Constant.downloadButtonCornerRadius)
         screenShotImageViews.forEach {
-            $0.layer.cornerRadius = Constant.imageCornerRadius
+            $0.setBorderStyle(width: Constant.imageBorderWidth, color: Constant.imageBorderColor, radius: Constant.imageCornerRadius)
         }
     }
     
     func configureRating(rating: Double, counts: Int) {
-        ratingStackView.subviews.forEach {
-            $0.removeFromSuperview()
-        }
+        ratingStackView.removeSubviews()
         
         (0..<Int(rating)).forEach { _ in
             let fullStarImageView = UIImageView(image: UIImage(systemName: "star.fill")?.withTintColor(.lightGray, renderingMode: .alwaysOriginal))
@@ -124,7 +124,21 @@ private extension SeachResultCollectionViewCell {
                 $0.width.height.equalTo(Constant.starImageWidth)
             }
         }
-        ratingCountLabel.text = "\(counts)"
+        ratingCountLabel.text = counts.countText()
         ratingStackView.addArrangedSubview(ratingCountLabel)
+    }
+}
+
+fileprivate extension Int {
+    func countText() -> String {
+        if self >= 10000 {
+            let dividedByTenThousand = Double(self) / 10000.0
+            return String(format: "%.1f만", dividedByTenThousand)
+        } else if self >= 1000 {
+            let dividedByThousand = Double(self) / 1000.0
+            return String(format: "%.1f천", dividedByThousand)
+        } else {
+            return "\(self)"
+        }
     }
 }

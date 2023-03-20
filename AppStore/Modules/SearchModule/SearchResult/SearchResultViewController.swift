@@ -32,13 +32,14 @@ final class SearchResultViewController: UIViewController {
 
     typealias Delegates = SuggestedSearchDelegate & SearchResultViewControllerDelegate
     typealias ViewModel = SuggestTableViewAdapterDataProvider
-    & SearchResultViewAdapterDataProvider
+    & SearchResultCollectionViewAdapterDataProvider
     & SearchResultViewModel
     
     private weak var viewModel: ViewModel?
     private weak var delegate: Delegates?
     private var cancellables = Set<AnyCancellable>()
     private lazy var suggestTableViewAdapter = SuggestTableViewAdapter(delegate: delegate, dataProvider: viewModel)
+    private lazy var resultCollectionViewAdapter = SearchResultCollectionViewAdapter(dataProvider: viewModel)
     
     @IBOutlet private weak var suggestTableView: UITableView!
     @IBOutlet private weak var resultCollectionView: UICollectionView!
@@ -49,12 +50,12 @@ final class SearchResultViewController: UIViewController {
         setupView()
         bind()
     }
-
 }
 
 private extension SearchResultViewController {
     func setupView() {
         suggestTableViewAdapter.setRequirements(suggestTableView)
+        resultCollectionViewAdapter.setRequirements(resultCollectionView)
     }
     
     func bind() {
@@ -62,7 +63,6 @@ private extension SearchResultViewController {
             self?.render(state)
         }
         .store(in: &cancellables)
-   
     }
     
     func render(_ viewState: SearchViewModel.ViewState) {
@@ -70,6 +70,8 @@ private extension SearchResultViewController {
         case .hideSuggestTableView(let isHidden):
             suggestTableView.isHidden = isHidden
             suggestTableView.reloadData()
+        case .reloadResultCollectionView:
+            resultCollectionView.reloadData()
         default:
             break
         }

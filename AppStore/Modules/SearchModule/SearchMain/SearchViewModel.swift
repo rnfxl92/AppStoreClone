@@ -13,12 +13,13 @@ final class SearchViewModel: SearchResultViewModel {
     enum ViewState {
         case reloadCollectionView
         case hideSuggestTableView(isHidden: Bool)
+        case reloadResultCollectionView
     }
     
     let viewState = PassthroughSubject<ViewState, Never>()
     let searchText = CurrentValueSubject<String, Never>("")
     private let recentSearchKeywords = CurrentValueSubject<[KeywordModel], Never>([])
-    
+    private var data: SearchResultModel?
     private var cancellables = Set<AnyCancellable>()
     
     init() {
@@ -31,14 +32,17 @@ final class SearchViewModel: SearchResultViewModel {
     
     func requestSearch(_ keyword: String) {
         RecentSearchKeywordManager.shared.addKeyword(keyword)
-        // requestSearch
-        API.shared.search(keyword: keyword) { [weak self] result, data, error in
-            print(result)
-            print(data)
-            print(error)
+        viewState.send(.hideSuggestTableView(isHidden: true))
+        API.shared.search(keyword: keyword) { [weak self] success, data, error in
+            if success,
+               let data {
+                self?.data = data
+                self?.viewState.send(.reloadResultCollectionView)
+            } else {
+                // TODO: - 에러 처리
+            }
         }
         
-        viewState.send(.hideSuggestTableView(isHidden: true))
     }
 }
 
@@ -68,6 +72,8 @@ extension SearchViewModel: SuggestTableViewAdapterDataProvider {
     }
 }
 
-extension SearchViewModel: SearchResultViewAdapterDataProvider {
-    
+extension SearchViewModel: SearchResultCollectionViewAdapterDataProvider {
+    var searchResult: [SearchResultItemModel] {
+        return data?.results ?? []
+    }
 }
