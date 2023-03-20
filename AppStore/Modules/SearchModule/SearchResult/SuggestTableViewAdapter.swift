@@ -36,7 +36,9 @@ final class SuggestTableViewAdapter: NSObject {
 
 extension SuggestTableViewAdapter: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if let keyword = dataProvider?.suggestKeywords[safe: indexPath.item]?.keyword {
+            delegate?.didSelectSuggestedSearch(keyword: keyword)
+        }
     }
 }
 

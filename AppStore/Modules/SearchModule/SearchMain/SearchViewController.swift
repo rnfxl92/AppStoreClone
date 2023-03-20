@@ -117,6 +117,8 @@ extension SearchViewController: SearchResultViewControllerDelegate {
 
 extension SearchViewController: SuggestedSearchDelegate {
     func didSelectSuggestedSearch(keyword: String) {
-        
+        searchController.searchBar.text = keyword
+        searchController.searchBar.resignFirstResponder()
+        viewModel.requestSearch(keyword)
     }
 }
