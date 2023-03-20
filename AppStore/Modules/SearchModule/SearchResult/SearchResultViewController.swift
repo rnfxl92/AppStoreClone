@@ -72,6 +72,7 @@ private extension SearchResultViewController {
             suggestTableView.reloadData()
         case .reloadResultCollectionView:
             resultCollectionView.reloadData()
+            resultCollectionView.setContentOffset(.zero, animated: false)
         default:
             break
         }
