@@ -76,7 +76,12 @@ private extension SearchViewController {
 }
 
 extension SearchViewController: RecentSearchAdapterDelegate {
-    
+    func didSelectRecentSearch(keyword: String) {
+        searchController.searchBar.text = keyword
+        searchController.searchBar.becomeFirstResponder()
+        searchController.searchBar.resignFirstResponder()
+        viewModel.requestSearch(keyword)
+    }
 }
 
 extension SearchViewController: UISearchBarDelegate {

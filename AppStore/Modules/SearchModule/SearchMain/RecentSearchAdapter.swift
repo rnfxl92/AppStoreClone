@@ -8,7 +8,7 @@
 import UIKit
 
 protocol RecentSearchAdapterDelegate: AnyObject {
-    
+    func didSelectRecentSearch(keyword: String)
 }
 
 protocol RecentSearchAdapterDataProvider: AnyObject {
@@ -37,7 +37,11 @@ final class RecentSearchAdapter: NSObject {
 }
 
 extension RecentSearchAdapter: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let keyword = dataProvider?.recentKeywords[safe: indexPath.item]?.keyword {
+            delegate?.didSelectRecentSearch(keyword: keyword)
+        }
+    }
 }
 
 extension RecentSearchAdapter: UICollectionViewDataSource {

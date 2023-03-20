@@ -32,6 +32,7 @@ final class SearchViewModel: SearchResultViewModel {
     func requestSearch(_ keyword: String) {
         RecentSearchKeywordManager.shared.addKeyword(keyword)
         // requestSearch
+        
         viewState.send(.hideSuggestTableView(isHidden: true))
     }
 }
