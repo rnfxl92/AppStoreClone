@@ -32,6 +32,11 @@ final class SearchViewModel: SearchResultViewModel {
     func requestSearch(_ keyword: String) {
         RecentSearchKeywordManager.shared.addKeyword(keyword)
         // requestSearch
+        API.shared.search(keyword: keyword) { [weak self] result, data, error in
+            print(result)
+            print(data)
+            print(error)
+        }
         
         viewState.send(.hideSuggestTableView(isHidden: true))
     }
