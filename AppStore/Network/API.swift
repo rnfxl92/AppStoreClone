@@ -24,10 +24,11 @@ final class API {
         let path = "/search"
         let url = host + path
         let params: Parameters = [
-            "entity": "software",
+            "media": "software",
+            "country": "search.country".localized(),
             "term" : keyword
         ]
-        let request = AF
+        _ = AF
             .request(
                 url,
                 method: .get,

@@ -19,3 +19,4 @@
 "search.empty" = "검색 결과가 없습니다.";
 "search.history_empty" = "검색 내역이 없습니다.";
 "search.recent_searches" = "Recent Searches";
+"search.country" = "US";
