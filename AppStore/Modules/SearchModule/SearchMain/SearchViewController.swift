@@ -104,7 +104,10 @@ extension SearchViewController: UISearchControllerDelegate {
 
 extension SearchViewController: SearchResultViewAdapterDelegate {
     func didSelectSearchResult(indexPath: IndexPath) {
-        // move to DetailView
+        if let data = viewModel.searchResult[safe: indexPath.item],
+           let vc = SearchResultDetailViewController.initialize(viewModel: .init(data: data)) {
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 
 }
