@@ -12,24 +12,28 @@ protocol SearchResultDetailDataProvider: AnyObject {
 }
 
 final class SearchResultDetailCollectionViewAdapter: NSObject {
+    typealias Delegates = DescriptionCollectionViewCellDelegate
+   
     enum Section: Int, CaseIterable {
         case mainInfo
         case subInfo
         case screenShot
-        case newFunction
         case description
         case ratingAndReview
+        case newFunction
         case InfoList
     }
     
     private enum Constant {
-        static let itemMargin: CGFloat = 5
-        static let sectionMargin: CGFloat = 15
+        static let itemMargin: CGFloat = 8
+        static let sectionMargin: CGFloat = 16
     }
     
+    private weak var delegate: Delegates?
     private weak var dataProvider: SearchResultDetailDataProvider?
     
-    init(dataProvider: SearchResultDetailDataProvider? = nil) {
+    init(delegate: Delegates?, dataProvider: SearchResultDetailDataProvider?) {
+        self.delegate = delegate
         self.dataProvider = dataProvider
     }
     
@@ -41,6 +45,7 @@ final class SearchResultDetailCollectionViewAdapter: NSObject {
         collectionView.registerCellXib(cellClass: MainInfoCollectionViewCell.self)
         collectionView.registerCellXib(cellClass: SubInfoCollectionViewCell.self)
         collectionView.register(cellClass: ScreenShotCollectionViewCell.self)
+        collectionView.registerCellXib(cellClass: DescriptionCollectionViewCell.self)
     }
     
 }
@@ -56,6 +61,8 @@ private extension SearchResultDetailCollectionViewAdapter {
                 return self.subInfoSectionLayout()
             case .screenShot:
                 return self.screenShotSectionLayout()
+            case .description:
+                return self.descriptionSectionLayout()
             default:
                 return self.mainInfoSectionLayout()
             }
@@ -98,8 +105,8 @@ private extension SearchResultDetailCollectionViewAdapter {
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = .init(top: Constant.itemMargin, leading: Constant.itemMargin, bottom: Constant.itemMargin, trailing: Constant.itemMargin)
         
-        let width = (UIScreen.main.bounds.width - Constant.sectionMargin) / 1.5
-        let height = width * 19.5 / 9
+        let width = floor((UIScreen.main.bounds.width - Constant.sectionMargin - Constant.itemMargin) / 1.5)
+        let height = floor(width * 19.5 / 9)
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .absolute(width),
             heightDimension: .absolute(height)
@@ -111,6 +118,19 @@ private extension SearchResultDetailCollectionViewAdapter {
         section.orthogonalScrollingBehavior = .groupPaging
         section.contentInsets = .init(top: Constant.sectionMargin, leading: Constant.sectionMargin, bottom: Constant.sectionMargin, trailing: Constant.sectionMargin)
         
+        return section
+    }
+    
+    func descriptionSectionLayout() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(1))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets.zero
+        section.contentInsets = .init(top: Constant.sectionMargin, leading: Constant.sectionMargin, bottom: Constant.sectionMargin, trailing: Constant.sectionMargin)
         return section
     }
 }
@@ -127,7 +147,7 @@ extension SearchResultDetailCollectionViewAdapter: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch Section(rawValue: section) {
-        case .mainInfo, .subInfo:
+        case .mainInfo, .subInfo, .description:
             return 1
         case .screenShot:
             return dataProvider?.data.screenshotUrls.count ?? .zero
@@ -179,6 +199,15 @@ extension SearchResultDetailCollectionViewAdapter: UICollectionViewDataSource {
             if let data = dataProvider?.data,
                let imageUrlString = data.screenshotUrls[safe: indexPath.item] {
                 cell.configure(urlString: imageUrlString)
+            }
+            return cell
+        case .description:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DescriptionCollectionViewCell.className(), for: indexPath) as? DescriptionCollectionViewCell else {
+                fatalError("Fail to dequeue DescriptionCollectionViewCell")
+            }
+            if let data = dataProvider?.data,
+               let delegate {
+                cell.configure(with: data.resultDescription, delegate: delegate)
             }
             return cell
         default:

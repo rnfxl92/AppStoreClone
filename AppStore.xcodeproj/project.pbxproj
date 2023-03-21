@@ -27,6 +27,8 @@
 		066B678029C9F22B00C7AC3D /* SubInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B677E29C9F22B00C7AC3D /* SubInfoCollectionViewCell.swift */; };
 		066B678129C9F22B00C7AC3D /* SubInfoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 066B677F29C9F22B00C7AC3D /* SubInfoCollectionViewCell.xib */; };
 		066B678729CA08A300C7AC3D /* ScreenShotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B678629CA08A300C7AC3D /* ScreenShotCollectionViewCell.swift */; };
+		066B678A29CA104A00C7AC3D /* DescriptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B678829CA104A00C7AC3D /* DescriptionCollectionViewCell.swift */; };
+		066B678B29CA104A00C7AC3D /* DescriptionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 066B678929CA104A00C7AC3D /* DescriptionCollectionViewCell.xib */; };
 		069D6EE029C547C400DF1FE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D6EDF29C547C400DF1FE2 /* AppDelegate.swift */; };
 		069D6EE929C547C400DF1FE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 069D6EE829C547C400DF1FE2 /* Assets.xcassets */; };
 		069D6EEC29C547C400DF1FE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 069D6EEA29C547C400DF1FE2 /* LaunchScreen.storyboard */; };
@@ -99,6 +101,8 @@
 		066B677E29C9F22B00C7AC3D /* SubInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		066B677F29C9F22B00C7AC3D /* SubInfoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubInfoCollectionViewCell.xib; sourceTree = "<group>"; };
 		066B678629CA08A300C7AC3D /* ScreenShotCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenShotCollectionViewCell.swift; sourceTree = "<group>"; };
+		066B678829CA104A00C7AC3D /* DescriptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionCollectionViewCell.swift; sourceTree = "<group>"; };
+		066B678929CA104A00C7AC3D /* DescriptionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionCollectionViewCell.xib; sourceTree = "<group>"; };
 		069D6EDC29C547C400DF1FE2 /* AppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		069D6EDF29C547C400DF1FE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		069D6EE829C547C400DF1FE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 				066B677E29C9F22B00C7AC3D /* SubInfoCollectionViewCell.swift */,
 				066B677F29C9F22B00C7AC3D /* SubInfoCollectionViewCell.xib */,
 				066B678629CA08A300C7AC3D /* ScreenShotCollectionViewCell.swift */,
+				066B678829CA104A00C7AC3D /* DescriptionCollectionViewCell.swift */,
+				066B678929CA104A00C7AC3D /* DescriptionCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -470,6 +476,7 @@
 				069D6F1F29C57DEB00DF1FE2 /* AppViewController.xib in Resources */,
 				069D6F3529C5A2B100DF1FE2 /* SearchHistoryCollectionViewCell.xib in Resources */,
 				066B677D29C9E4C100C7AC3D /* MainInfoCollectionViewCell.xib in Resources */,
+				066B678B29CA104A00C7AC3D /* DescriptionCollectionViewCell.xib in Resources */,
 				069D6F3D29C5A8EC00DF1FE2 /* SearchResultViewController.xib in Resources */,
 				069D6F4129C5AB7F00DF1FE2 /* EmptyStateCollectionViewCell.xib in Resources */,
 				069D6F1B29C57DE000DF1FE2 /* GameViewController.xib in Resources */,
@@ -503,6 +510,7 @@
 				069D6F4629C5FF6500DF1FE2 /* KeywordModel.swift in Sources */,
 				066B677729C9DFFD00C7AC3D /* SearchResultDetailViewController.swift in Sources */,
 				069D6EE029C547C400DF1FE2 /* AppDelegate.swift in Sources */,
+				066B678A29CA104A00C7AC3D /* DescriptionCollectionViewCell.swift in Sources */,
 				069D6F1429C57DB600DF1FE2 /* TodayViewController.swift in Sources */,
 				0648701A29C74DC4002A5132 /* SuggestTableViewCell.swift in Sources */,
 				069D6F3429C5A2B100DF1FE2 /* SearchHistoryCollectionViewCell.swift in Sources */,

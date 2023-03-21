@@ -17,7 +17,7 @@ final class SearchResultDetailViewController: UIViewController {
     }
     
     private var viewModel: SearchResultDetailViewModel?
-    private lazy var collectionViewAdapter = SearchResultDetailCollectionViewAdapter(dataProvider: viewModel)
+    private lazy var collectionViewAdapter = SearchResultDetailCollectionViewAdapter(delegate: self, dataProvider: viewModel)
     
     @IBOutlet private weak var mainCollectionView: UICollectionView!
     
@@ -33,5 +33,11 @@ final class SearchResultDetailViewController: UIViewController {
 extension SearchResultDetailViewController {
     func setupView() {
         collectionViewAdapter.setRequirements(mainCollectionView)
+    }
+}
+
+extension SearchResultDetailViewController: DescriptionCollectionViewCellDelegate {
+    func updateCollectionViewLayout() {
+        mainCollectionView.collectionViewLayout.invalidateLayout()
     }
 }
