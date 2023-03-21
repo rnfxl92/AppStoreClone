@@ -8,14 +8,6 @@
 import UIKit
 import Combine
 
-protocol SuggestedSearchDelegate: AnyObject {
-    func didSelectSuggestedSearch(keyword: String)
-}
-
-protocol SearchResultViewControllerDelegate: AnyObject {
-    
-}
-
 protocol SearchResultViewModel: AnyObject {
     var viewState: PassthroughSubject<SearchViewModel.ViewState, Never> { get }
 }
@@ -30,7 +22,7 @@ final class SearchResultViewController: UIViewController {
         return vc
     }
 
-    typealias Delegates = SuggestedSearchDelegate & SearchResultViewControllerDelegate
+    typealias Delegates = SuggestedSearchTableViewAdapterDelegate & SearchResultViewAdapterDelegate
     typealias ViewModel = SuggestTableViewAdapterDataProvider
     & SearchResultCollectionViewAdapterDataProvider
     & SearchResultViewModel
@@ -38,8 +30,8 @@ final class SearchResultViewController: UIViewController {
     private weak var viewModel: ViewModel?
     private weak var delegate: Delegates?
     private var cancellables = Set<AnyCancellable>()
-    private lazy var suggestTableViewAdapter = SuggestTableViewAdapter(delegate: delegate, dataProvider: viewModel)
-    private lazy var resultCollectionViewAdapter = SearchResultCollectionViewAdapter(dataProvider: viewModel)
+    private lazy var suggestTableViewAdapter = SuggestSearchTableViewAdapter(delegate: delegate, dataProvider: viewModel)
+    private lazy var resultCollectionViewAdapter = SearchResultCollectionViewAdapter(delegate: delegate, dataProvider: viewModel)
     
     @IBOutlet private weak var suggestTableView: UITableView!
     @IBOutlet private weak var resultCollectionView: UICollectionView!

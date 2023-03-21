@@ -11,13 +11,19 @@ protocol SearchResultCollectionViewAdapterDataProvider: AnyObject {
     var searchResult: [SearchResultItemModel] { get }
 }
 
+protocol SearchResultViewAdapterDelegate: AnyObject {
+    func  didSelectSearchResult(indexPath: IndexPath)
+}
+
 final class SearchResultCollectionViewAdapter: NSObject {
-    private weak var dataProvider: SearchResultCollectionViewAdapterDataProvider?
     
-    init(dataProvider: SearchResultCollectionViewAdapterDataProvider?) {
+    private weak var dataProvider: SearchResultCollectionViewAdapterDataProvider?
+    private weak var delegate: SearchResultViewAdapterDelegate?
+    
+    init(delegate: SearchResultViewAdapterDelegate?, dataProvider: SearchResultCollectionViewAdapterDataProvider?) {
+        self.delegate = delegate
         self.dataProvider = dataProvider
     }
-    
     
     func setRequirements(_ collectionView: UICollectionView) {
         collectionView.delegate = self
@@ -25,11 +31,12 @@ final class SearchResultCollectionViewAdapter: NSObject {
         
         collectionView.registerCellXib(cellClass: SearchResultCollectionViewCell.self)
     }
-    
 }
 
 extension SearchResultCollectionViewAdapter: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.didSelectSearchResult(indexPath: indexPath)
+    }
 }
 
 extension SearchResultCollectionViewAdapter: UICollectionViewDataSource {

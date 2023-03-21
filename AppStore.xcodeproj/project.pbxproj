@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0648701329C73929002A5132 /* RecentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0648701129C73929002A5132 /* RecentHeaderView.swift */; };
 		0648701429C73929002A5132 /* RecentHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0648701229C73929002A5132 /* RecentHeaderView.xib */; };
-		0648701729C74782002A5132 /* SuggestTableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0648701629C74782002A5132 /* SuggestTableViewAdapter.swift */; };
+		0648701729C74782002A5132 /* SuggestSearchTableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0648701629C74782002A5132 /* SuggestSearchTableViewAdapter.swift */; };
 		0648701A29C74DC4002A5132 /* SuggestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0648701829C74DC4002A5132 /* SuggestTableViewCell.swift */; };
 		0648701B29C74DC4002A5132 /* SuggestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0648701929C74DC4002A5132 /* SuggestTableViewCell.xib */; };
 		064AA07229C881AE00AA34A8 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064AA07129C881AE00AA34A8 /* API.swift */; };
@@ -73,7 +73,7 @@
 /* Begin PBXFileReference section */
 		0648701129C73929002A5132 /* RecentHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentHeaderView.swift; sourceTree = "<group>"; };
 		0648701229C73929002A5132 /* RecentHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecentHeaderView.xib; sourceTree = "<group>"; };
-		0648701629C74782002A5132 /* SuggestTableViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestTableViewAdapter.swift; sourceTree = "<group>"; };
+		0648701629C74782002A5132 /* SuggestSearchTableViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestSearchTableViewAdapter.swift; sourceTree = "<group>"; };
 		0648701829C74DC4002A5132 /* SuggestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestTableViewCell.swift; sourceTree = "<group>"; };
 		0648701929C74DC4002A5132 /* SuggestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestTableViewCell.xib; sourceTree = "<group>"; };
 		064AA07129C881AE00AA34A8 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -144,6 +144,13 @@
 				064AA07429C891A800AA34A8 /* SearchResultCollectionViewCell.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		066B676729C9D3D400C7AC3D /* SearchResultDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SearchResultDetail;
 			sourceTree = "<group>";
 		};
 		069D6ED329C547C400DF1FE2 = {
@@ -266,6 +273,7 @@
 				069D6F4429C5FF4D00DF1FE2 /* RecentKeyword */,
 				069D6F2D29C5981E00DF1FE2 /* SearchMain */,
 				069D6F2E29C5983000DF1FE2 /* SearchResult */,
+				066B676729C9D3D400C7AC3D /* SearchResultDetail */,
 			);
 			path = SearchModule;
 			sourceTree = "<group>";
@@ -305,7 +313,7 @@
 				0648701529C74602002A5132 /* Views */,
 				069D6F3A29C5A8EC00DF1FE2 /* SearchResultViewController.swift */,
 				069D6F3B29C5A8EC00DF1FE2 /* SearchResultViewController.xib */,
-				0648701629C74782002A5132 /* SuggestTableViewAdapter.swift */,
+				0648701629C74782002A5132 /* SuggestSearchTableViewAdapter.swift */,
 				064AA07A29C8AFD300AA34A8 /* SearchResultCollectionViewAdapter.swift */,
 			);
 			path = SearchResult;
@@ -446,7 +454,7 @@
 				069D6F1A29C57DE000DF1FE2 /* GameViewController.swift in Sources */,
 				069D6F3929C5A6A500DF1FE2 /* AnyNameable.swift in Sources */,
 				069D6EFE29C5632900DF1FE2 /* Collection+.swift in Sources */,
-				0648701729C74782002A5132 /* SuggestTableViewAdapter.swift in Sources */,
+				0648701729C74782002A5132 /* SuggestSearchTableViewAdapter.swift in Sources */,
 				069D6F3029C59F5800DF1FE2 /* RecentSearchAdapter.swift in Sources */,
 				064AA07229C881AE00AA34A8 /* API.swift in Sources */,
 				069D6F4029C5AB7F00DF1FE2 /* EmptyStateCollectionViewCell.swift in Sources */,

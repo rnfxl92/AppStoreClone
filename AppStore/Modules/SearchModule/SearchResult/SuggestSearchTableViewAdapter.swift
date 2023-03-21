@@ -12,12 +12,16 @@ protocol SuggestTableViewAdapterDataProvider: AnyObject {
     var suggestKeywords: [KeywordModel] { get }
 }
 
-final class SuggestTableViewAdapter: NSObject {
+protocol SuggestedSearchTableViewAdapterDelegate: AnyObject {
+    func didSelectSuggestedSearch(keyword: String)
+}
+
+final class SuggestSearchTableViewAdapter: NSObject {
     
-    private weak var delegate: SuggestedSearchDelegate?
+    private weak var delegate: SuggestedSearchTableViewAdapterDelegate?
     private weak var dataProvider: SuggestTableViewAdapterDataProvider?
     
-    init(delegate: SuggestedSearchDelegate?, dataProvider: SuggestTableViewAdapterDataProvider?) {
+    init(delegate: SuggestedSearchTableViewAdapterDelegate?, dataProvider: SuggestTableViewAdapterDataProvider?) {
         self.delegate = delegate
         self.dataProvider = dataProvider
     }
@@ -30,7 +34,7 @@ final class SuggestTableViewAdapter: NSObject {
     }
 }
 
-extension SuggestTableViewAdapter: UITableViewDelegate {
+extension SuggestSearchTableViewAdapter: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let keyword = dataProvider?.suggestKeywords[safe: indexPath.item]?.keyword {
             delegate?.didSelectSuggestedSearch(keyword: keyword)
@@ -38,7 +42,7 @@ extension SuggestTableViewAdapter: UITableViewDelegate {
     }
 }
 
-extension SuggestTableViewAdapter: UITableViewDataSource {
+extension SuggestSearchTableViewAdapter: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataProvider?.suggestKeywords.count ?? .zero
     }

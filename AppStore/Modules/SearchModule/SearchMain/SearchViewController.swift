@@ -26,19 +26,11 @@ final class SearchViewController: UIViewController {
     
     @IBOutlet private weak var recentSearchCollectionView: UICollectionView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupView()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-    }
-    
 }
 
 private extension SearchViewController {
@@ -107,15 +99,17 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UISearchControllerDelegate {
     func presentSearchController(_ searchController: UISearchController) {
         searchController.showsSearchResultsController = true
-//        setToSuggestedSearches()
     }
 }
 
-extension SearchViewController: SearchResultViewControllerDelegate {
-    
+extension SearchViewController: SearchResultViewAdapterDelegate {
+    func didSelectSearchResult(indexPath: IndexPath) {
+        // move to DetailView
+    }
+
 }
 
-extension SearchViewController: SuggestedSearchDelegate {
+extension SearchViewController: SuggestedSearchTableViewAdapterDelegate {
     func didSelectSuggestedSearch(keyword: String) {
         searchController.searchBar.text = keyword
         searchController.searchBar.resignFirstResponder()
