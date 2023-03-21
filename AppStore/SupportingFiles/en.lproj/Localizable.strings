@@ -24,3 +24,8 @@
 // MARK: Search Result
 "search_result.down" =  "Install";;
 "search_result.in_app_purchase" ="in app purchase";
+
+// MARK: Search Result Detail
+"age" = "Age";
+"developer" = "Developer";
+"language" = "Language";

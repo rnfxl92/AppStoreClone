@@ -34,6 +34,7 @@ final class SearchResultDetailCollectionViewAdapter: NSObject {
         collectionView.collectionViewLayout = makeCompositionalLayout()
         
         collectionView.registerCellXib(cellClass: MainInfoCollectionViewCell.self)
+        collectionView.registerCellXib(cellClass: SubInfoCollectionViewCell.self)
     }
     
 }
@@ -45,7 +46,8 @@ private extension SearchResultDetailCollectionViewAdapter {
             switch Section(rawValue: sectionIndex) {
             case .mainInfo:
                 return self.mainInfoSectionLayout()
-                
+            case .subInfo:
+                return self.subInfoSectionLayout()
             default:
                 return self.mainInfoSectionLayout()
             }
@@ -63,6 +65,20 @@ private extension SearchResultDetailCollectionViewAdapter {
         
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets.zero
+        
+        return section
+    }
+    
+    func subInfoSectionLayout() -> NSCollectionLayoutSection {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(1), heightDimension: .fractionalHeight(1))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(1), heightDimension: .absolute(100))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets.zero
+        section.orthogonalScrollingBehavior = .continuous
         
         return section
     }
@@ -100,6 +116,23 @@ extension SearchResultDetailCollectionViewAdapter: UICollectionViewDataSource {
                         price: data.price ?? 0)
                 )
             }
+            return cell
+            
+        case .subInfo:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SubInfoCollectionViewCell.className(), for: indexPath) as? SubInfoCollectionViewCell else {
+                fatalError("Fail to dequeue MainInfoCollectionViewCell")
+            }
+            if let data = dataProvider?.data {
+                cell.configure(
+                    with: .init(
+                        userRatingCount: data.userRatingCount,
+                        averageUserRating: data.averageUserRating,
+                        contentAdvisoryRating: data.contentAdvisoryRating,
+                        sellerName: data.sellerName,
+                        languageCodesISO2A: data.languageCodesISO2A)
+                )
+            }
+
             return cell
         default:
             break

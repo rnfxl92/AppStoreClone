@@ -25,3 +25,8 @@
 // MARK: Search Result
 "search_result.down" = "받기";
 "search_result.in_app_purchase" = "앱 내 구입";
+
+// MARK: Search Result Detail
+"age" = "연령";
+"developer" = "개발자";
+"language" = "언어";
