@@ -26,6 +26,7 @@
 		066B677D29C9E4C100C7AC3D /* MainInfoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 066B677B29C9E4C100C7AC3D /* MainInfoCollectionViewCell.xib */; };
 		066B678029C9F22B00C7AC3D /* SubInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B677E29C9F22B00C7AC3D /* SubInfoCollectionViewCell.swift */; };
 		066B678129C9F22B00C7AC3D /* SubInfoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 066B677F29C9F22B00C7AC3D /* SubInfoCollectionViewCell.xib */; };
+		066B678729CA08A300C7AC3D /* ScreenShotCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B678629CA08A300C7AC3D /* ScreenShotCollectionViewCell.swift */; };
 		069D6EE029C547C400DF1FE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 069D6EDF29C547C400DF1FE2 /* AppDelegate.swift */; };
 		069D6EE929C547C400DF1FE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 069D6EE829C547C400DF1FE2 /* Assets.xcassets */; };
 		069D6EEC29C547C400DF1FE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 069D6EEA29C547C400DF1FE2 /* LaunchScreen.storyboard */; };
@@ -97,6 +98,7 @@
 		066B677B29C9E4C100C7AC3D /* MainInfoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainInfoCollectionViewCell.xib; sourceTree = "<group>"; };
 		066B677E29C9F22B00C7AC3D /* SubInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		066B677F29C9F22B00C7AC3D /* SubInfoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubInfoCollectionViewCell.xib; sourceTree = "<group>"; };
+		066B678629CA08A300C7AC3D /* ScreenShotCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenShotCollectionViewCell.swift; sourceTree = "<group>"; };
 		069D6EDC29C547C400DF1FE2 /* AppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		069D6EDF29C547C400DF1FE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		069D6EE829C547C400DF1FE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				066B677B29C9E4C100C7AC3D /* MainInfoCollectionViewCell.xib */,
 				066B677E29C9F22B00C7AC3D /* SubInfoCollectionViewCell.swift */,
 				066B677F29C9F22B00C7AC3D /* SubInfoCollectionViewCell.xib */,
+				066B678629CA08A300C7AC3D /* ScreenShotCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 			files = (
 				066B677129C9DA1000C7AC3D /* SearchResultDetailViewModel.swift in Sources */,
 				069D6F3729C5A58600DF1FE2 /* Registrable.swift in Sources */,
+				066B678729CA08A300C7AC3D /* ScreenShotCollectionViewCell.swift in Sources */,
 				069D6F1A29C57DE000DF1FE2 /* GameViewController.swift in Sources */,
 				069D6F3929C5A6A500DF1FE2 /* AnyNameable.swift in Sources */,
 				069D6EFE29C5632900DF1FE2 /* Collection+.swift in Sources */,

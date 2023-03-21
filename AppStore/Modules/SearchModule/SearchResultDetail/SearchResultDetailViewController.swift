@@ -27,8 +27,7 @@ final class SearchResultDetailViewController: UIViewController {
 
         setupView()
     }
-    
-    
+
 }
 
 extension SearchResultDetailViewController {

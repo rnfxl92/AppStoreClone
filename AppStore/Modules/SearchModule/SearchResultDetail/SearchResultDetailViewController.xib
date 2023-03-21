@@ -21,9 +21,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="sBy-3V-jUR">
-                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PkN-Ux-VVp">
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="PkN-Ux-VVp">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -34,9 +34,9 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="sBy-3V-jUR" secondAttribute="bottom" id="6eJ-Ok-bBP"/>
+                <constraint firstAttribute="bottom" secondItem="sBy-3V-jUR" secondAttribute="bottom" id="6eJ-Ok-bBP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="sBy-3V-jUR" secondAttribute="trailing" id="CBq-aN-PqD"/>
-                <constraint firstItem="sBy-3V-jUR" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="E2F-C0-JgJ"/>
+                <constraint firstItem="sBy-3V-jUR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="E2F-C0-JgJ"/>
                 <constraint firstItem="sBy-3V-jUR" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="nxN-QQ-jQf"/>
             </constraints>
             <point key="canvasLocation" x="140" y="21"/>
