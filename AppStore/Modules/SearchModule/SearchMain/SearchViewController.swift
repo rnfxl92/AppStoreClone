@@ -59,12 +59,31 @@ private extension SearchViewController {
     
     func render(_ state: SearchViewModel.ViewState) {
         switch state {
-        case .reloadCollectionView:
+        case .reloadRecentSearchCollectionView:
             recentSearchCollectionView.reloadData()
+        case .showAlert(let message):
+            showAlertWithSingleConfirmButton(message: message, completion: nil)
         default:
             break
         }
     }
+    
+    func showAlertWithSingleConfirmButton(message: String?, completion: (() -> Void)?) {
+        var defaultMessage = "Unknwon Error"
+        if let message {
+            defaultMessage = message
+        }
+        
+        let alert = UIAlertController(title: "alert".localized(), message: defaultMessage, preferredStyle: .alert)
+        let action = UIAlertAction(title: "confirm".localized(), style: .cancel, handler:
+            { action in
+                completion?()
+            }
+        )
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }
 
 extension SearchViewController: RecentSearchAdapterDelegate {

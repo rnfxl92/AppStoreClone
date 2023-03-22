@@ -10,7 +10,7 @@ import Foundation
 final class RecentSearchKeywordManager {
     
     static let shared: RecentSearchKeywordManager = RecentSearchKeywordManager()
-    private let maxKeywordLimit: Int = 100
+    private let maxKeywordLimit: Int = 100 // 임의로 최대값 100개 제한
     
     private init() {}
     
@@ -37,6 +37,7 @@ final class RecentSearchKeywordManager {
         Session.shared.setRecentSearchKeywords(keywords)
     }
     
+    // 삭제기능 추후 고려
     func removeKeyword(_ keywordToRemove: String, completion: ((_ success: Bool) -> Void)?) {
         if var keywords = Session.shared.getRecentSearchKeywords() {
             keywords.removeAll(where: { $0.keyword == keywordToRemove })

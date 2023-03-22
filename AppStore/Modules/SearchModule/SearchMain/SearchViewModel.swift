@@ -11,9 +11,10 @@ import Combine
 final class SearchViewModel: SearchResultViewModel {
     
     enum ViewState {
-        case reloadCollectionView
+        case reloadRecentSearchCollectionView
         case hideSuggestTableView(isHidden: Bool)
         case reloadResultCollectionView
+        case showAlert(message: String?)
     }
     
     let viewState = PassthroughSubject<ViewState, Never>()
@@ -33,13 +34,14 @@ final class SearchViewModel: SearchResultViewModel {
     func requestSearch(_ keyword: String) {
         RecentSearchKeywordManager.shared.addKeyword(keyword)
         viewState.send(.hideSuggestTableView(isHidden: true))
-        API.shared.search(keyword: keyword) { [weak self] success, data, error in
+        Network.shared.search(keyword: keyword) { [weak self] success, data, error in
             if success,
                let data {
                 self?.data = data
                 self?.viewState.send(.reloadResultCollectionView)
+                self?.getRecentKeywords()
             } else {
-                // TODO: - 에러 처리
+                self?.viewState.send(.showAlert(message: error?.localizedDescription))
             }
         }
         
@@ -49,7 +51,8 @@ final class SearchViewModel: SearchResultViewModel {
 private extension SearchViewModel {
     func bind() {
         recentSearchKeywords.sink { [weak self] _ in
-            self?.viewState.send(.reloadCollectionView)
+            self?.viewState.send(.hideSuggestTableView(isHidden: false))
+            self?.viewState.send(.reloadRecentSearchCollectionView)
         }
         .store(in: &cancellables)
         

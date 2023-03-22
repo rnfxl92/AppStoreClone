@@ -20,6 +20,8 @@
 "search.history_empty" = "검색 내역이 없습니다.";
 "search.recent_searches" = "Recent Searches";
 "search.country" = "US";
+"alert" = "Alert";
+"confirm" = "Confirm";
 
 // MARK: Search Result
 "search_result.down" =  "Install";;

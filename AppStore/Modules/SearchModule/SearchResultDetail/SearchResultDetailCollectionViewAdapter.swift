@@ -21,9 +21,9 @@ final class SearchResultDetailCollectionViewAdapter: NSObject {
         case subInfo
         case screenShot
         case description
-        case ratingAndReview
-        case newFunction
-        case InfoList
+        case ratingAndReview // TODO
+        case newFunction // TODO
+        case InfoList // TODO
     }
     
     private enum Constant {
@@ -54,23 +54,21 @@ final class SearchResultDetailCollectionViewAdapter: NSObject {
 
 private extension SearchResultDetailCollectionViewAdapter {
     func makeCompositionalLayout() -> UICollectionViewCompositionalLayout {
-        let layout = UICollectionViewCompositionalLayout { (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection in
-            
+        let layout = UICollectionViewCompositionalLayout { [weak self] (sectionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
             switch Section(rawValue: sectionIndex) {
             case .mainInfo:
-                return self.mainInfoSectionLayout()
+                return self?.mainInfoSectionLayout()
             case .subInfo:
-                return self.subInfoSectionLayout()
+                return self?.subInfoSectionLayout()
             case .screenShot:
-                return self.screenShotSectionLayout()
+                return self?.screenShotSectionLayout()
             case .description:
-                return self.descriptionSectionLayout()
+                return self?.descriptionSectionLayout()
             default:
-                return self.mainInfoSectionLayout()
+                return nil
             }
         }
         return layout
-
     }
     
     func mainInfoSectionLayout() -> NSCollectionLayoutSection {
@@ -157,7 +155,6 @@ extension SearchResultDetailCollectionViewAdapter: UICollectionViewDataSource {
             return dataProvider?.data.screenshotUrls.count ?? .zero
         default:
             return .zero
-            
         }
     }
     
@@ -191,7 +188,8 @@ extension SearchResultDetailCollectionViewAdapter: UICollectionViewDataSource {
                         averageUserRating: data.averageUserRating,
                         contentAdvisoryRating: data.contentAdvisoryRating,
                         sellerName: data.sellerName,
-                        languageCodesISO2A: data.languageCodesISO2A)
+                        languageCodesISO2A: data.languageCodesISO2A
+                    )
                 )
             }
 
@@ -217,10 +215,7 @@ extension SearchResultDetailCollectionViewAdapter: UICollectionViewDataSource {
         default:
             break
         }
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainInfoCollectionViewCell.className(), for: indexPath) as? MainInfoCollectionViewCell else {
-            fatalError("Fail to dequeue MainInfoCollectionViewCell")
-        }
         
-        return cell
+        return UICollectionViewCell()
     }
 }

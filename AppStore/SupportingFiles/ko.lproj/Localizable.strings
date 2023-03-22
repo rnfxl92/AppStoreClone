@@ -20,6 +20,8 @@
 "search.history_empty" = "검색 내역이 없습니다.";
 "search.recent_searches" = "최근 검색어";
 "search.country" = "KR";
+"alert" = "알림";
+"confirm" = "확인";
 
 
 // MARK: Search Result

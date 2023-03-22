@@ -8,12 +8,12 @@
 import Foundation
 import Alamofire
 
-final class API {
-    static let shared = API()
+final class Network {
+    static let shared = Network()
     
     private init() { }
     
-    //https://itunes.apple.com/search?entity=software&term=
+    //https://itunes.apple.com/search?media=software&entity=software&term=
     func search(keyword: String, completion: @escaping (Bool, SearchResultModel?, AFError?) -> Void) {
         let host = "https://itunes.apple.com"
         let path = "/search"
