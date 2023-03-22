@@ -31,11 +31,17 @@ final class SearchViewController: UIViewController {
 
         setupView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setupNavigationBar()
+    }
 }
 
 private extension SearchViewController {
     func setupView() {
-        setupNavigationBar()
+        
         recentSearchAdapter.setRequirements(recentSearchCollectionView)
         bind()
         viewModel.getRecentKeywords()
@@ -106,7 +112,7 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        viewModel.getRecentKeywords()
+        viewModel.searchCancel()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

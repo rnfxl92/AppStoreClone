@@ -13,18 +13,26 @@ final class SearchViewModel: SearchResultViewModel {
     enum ViewState {
         case reloadRecentSearchCollectionView
         case hideSuggestTableView(isHidden: Bool)
+//        case reloadSuggestTableView
         case reloadResultCollectionView
         case showAlert(message: String?)
+        case indicatorView(isShow: Bool)
     }
     
     let viewState = PassthroughSubject<ViewState, Never>()
     let searchText = CurrentValueSubject<String, Never>("")
     private let recentSearchKeywords = CurrentValueSubject<[KeywordModel], Never>([])
+    
     private var data: SearchResultModel?
     private var cancellables = Set<AnyCancellable>()
     
     init() {
         bind()
+    }
+    
+    func searchCancel() {
+        getRecentKeywords()
+        viewState.send(.hideSuggestTableView(isHidden: false))
     }
     
     func getRecentKeywords() {
@@ -34,7 +42,12 @@ final class SearchViewModel: SearchResultViewModel {
     func requestSearch(_ keyword: String) {
         RecentSearchKeywordManager.shared.addKeyword(keyword)
         viewState.send(.hideSuggestTableView(isHidden: true))
+        data = nil
+        viewState.send(.reloadResultCollectionView)
+        viewState.send(.indicatorView(isShow: true))
+        
         Network.shared.search(keyword: keyword) { [weak self] success, data, error in
+            self?.viewState.send(.indicatorView(isShow: false))
             if success,
                let data {
                 self?.data = data
@@ -51,7 +64,6 @@ final class SearchViewModel: SearchResultViewModel {
 private extension SearchViewModel {
     func bind() {
         recentSearchKeywords.sink { [weak self] _ in
-            self?.viewState.send(.hideSuggestTableView(isHidden: false))
             self?.viewState.send(.reloadRecentSearchCollectionView)
         }
         .store(in: &cancellables)

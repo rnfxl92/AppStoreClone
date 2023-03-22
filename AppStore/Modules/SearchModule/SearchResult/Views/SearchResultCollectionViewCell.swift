@@ -14,7 +14,7 @@ final class SearchResultCollectionViewCell: UICollectionViewCell {
     static func calculateCellSize(availableWidth: CGFloat) -> CGSize {
         
         let infoContainerHeight: CGFloat = 80 // height: 상단 60 + spacing 20
-        let screenShotImageHeight: CGFloat = (availableWidth - 40 - 16) / 3 * 19.5 / 9 // 요즘 폰 비율 9 : 19.5
+        let screenShotImageHeight: CGFloat = (availableWidth - 40 - 16) / 3 * 19.5 / 9 // 폰 비율 9 : 19.5
         
         return CGSize(width: floor(availableWidth), height: floor(infoContainerHeight + screenShotImageHeight))
     }

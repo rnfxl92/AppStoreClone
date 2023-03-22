@@ -23,8 +23,9 @@ final class SuggestTableViewCell: UITableViewCell {
         keywordLabel.text = keyword
     }
     
-    
     private func setupView() {
-        magnifyingGlassImageView.image = UIImage(systemName: "magnifyingglass")?.withTintColor(.lightGray, renderingMode: .alwaysOriginal)
+        magnifyingGlassImageView.image = UIImage(
+            systemName: "magnifyingglass")?
+            .withTintColor(.lightGray, renderingMode: .alwaysOriginal)
     }
 }

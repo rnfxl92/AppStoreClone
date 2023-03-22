@@ -35,6 +35,7 @@ final class SearchResultViewController: UIViewController {
     
     @IBOutlet private weak var suggestTableView: UITableView!
     @IBOutlet private weak var resultCollectionView: UICollectionView!
+    @IBOutlet private weak var indicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,7 @@ private extension SearchResultViewController {
     func setupView() {
         suggestTableViewAdapter.setRequirements(suggestTableView)
         resultCollectionViewAdapter.setRequirements(resultCollectionView)
+        indicatorView.isHidden = true
     }
     
     func bind() {
@@ -65,6 +67,9 @@ private extension SearchResultViewController {
         case .reloadResultCollectionView:
             resultCollectionView.reloadData()
             resultCollectionView.setContentOffset(.zero, animated: false)
+        case .indicatorView(let isShow):
+            indicatorView.isHidden = !isShow
+            isShow ? indicatorView.startAnimating() : indicatorView.stopAnimating()
         default:
             break
         }
