@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import Combine
 
 final class SearchResultDetailViewController: UIViewController {
 
@@ -50,56 +51,66 @@ final class SearchResultDetailViewController: UIViewController {
         button.clipsToBounds = true
         button.snp.makeConstraints {
             $0.width.equalTo(70)
+            $0.height.equalTo(30)
         }
         return UIBarButtonItem(customView: button)
     }()
     
-    lazy var isHiddenNavigationBarAppInfo: Bool = true { // TODO: - 스크롤링 받아서 처리하기
-        didSet {
-            if oldValue == isHiddenNavigationBarAppInfo {
-                return
-            }
-            
-            navigationAppView.isHidden = isHiddenNavigationBarAppInfo
-            navigationButton.customView?.isHidden = isHiddenNavigationBarAppInfo
-        }
-    }
-    
+    private var cancellables = Set<AnyCancellable>()
     private var viewModel: SearchResultDetailViewModel?
     private lazy var collectionViewAdapter = SearchResultDetailCollectionViewAdapter(delegate: self, dataProvider: viewModel)
     
     @IBOutlet private weak var mainCollectionView: UICollectionView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupView()
+        bind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setupViewNavigationBar()
+        setNavigationBar()
     }
 
 }
 
-extension SearchResultDetailViewController {
+private extension SearchResultDetailViewController {
     func setupView() {
-        
         collectionViewAdapter.setRequirements(mainCollectionView)
-        
+        navigationItem.rightBarButtonItems = [navigationButton]
+        navigationItem.titleView = navigationAppView
     }
     
-    func setupViewNavigationBar() {
+    func bind() {
+        viewModel?.viewState.sink { [weak self] state in
+            self?.render(state)
+        }
+        .store(in: &cancellables)
+    }
+    
+    func render(_ viewState: SearchResultDetailViewModel.ViewState) {
+        switch viewState {
+        case .reloadCollectionView:
+            mainCollectionView.reloadData()
+        case .updateCollectionViewLayout:
+            mainCollectionView.collectionViewLayout.invalidateLayout()
+        case .isShowNavBarAppIcon(let isShow):
+            navigationAppView.isHidden = !isShow
+            navigationButton.customView?.isHidden = !isShow
+        }
+    }
+    
+    func setNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = false
-        navigationItem.titleView?.isHidden = isHiddenNavigationBarAppInfo
+        navigationItem.titleView?.isHidden = !(viewModel?.isShowNaviBarAppIcon.value ?? false)
     }
 }
 
 extension SearchResultDetailViewController: DescriptionCollectionViewCellDelegate {
     func updateCollectionViewLayout() {
-        mainCollectionView.collectionViewLayout.invalidateLayout()
+        render(.updateCollectionViewLayout)
     }
 }

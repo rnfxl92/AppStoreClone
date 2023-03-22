@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import Combine
 
 protocol SearchResultDetailDataProvider: AnyObject {
     var data: SearchResultItemModel { get }
+    var isShowNaviBarAppIcon: CurrentValueSubject<Bool, Never> { get }
 }
 
 final class SearchResultDetailCollectionViewAdapter: NSObject {
@@ -137,7 +139,9 @@ private extension SearchResultDetailCollectionViewAdapter {
 
 
 extension SearchResultDetailCollectionViewAdapter: UICollectionViewDelegate {
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        dataProvider?.isShowNaviBarAppIcon.send(scrollView.contentOffset.y > 100)
+    }
 }
 
 extension SearchResultDetailCollectionViewAdapter: UICollectionViewDataSource {
