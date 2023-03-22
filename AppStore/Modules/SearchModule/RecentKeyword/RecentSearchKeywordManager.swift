@@ -41,6 +41,7 @@ final class RecentSearchKeywordManager {
     func removeKeyword(_ keywordToRemove: String, completion: ((_ success: Bool) -> Void)?) {
         if var keywords = Session.shared.getRecentSearchKeywords() {
             keywords.removeAll(where: { $0.keyword == keywordToRemove })
+            Session.shared.setRecentSearchKeywords(keywords)
             completion?(true)
         } else {
             completion?(false)

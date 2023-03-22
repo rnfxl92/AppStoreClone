@@ -8,26 +8,29 @@
 import Foundation
 
 final class Session {
-    static let shared = Session()
+    static let shared = Session(userDefaults: UserDefaults.standard)
     
-    private init() {}
+    private let userDefaults: UserDefaults
+    
+    init(userDefaults: UserDefaults) {
+        self.userDefaults = userDefaults
+    }
     
     private let recentKeywordsKey: String = "RECENT_KEYWORDS"
     
     func getUserDefaults() -> UserDefaults {
-        let userDefaults: UserDefaults = UserDefaults.standard
         return userDefaults
     }
     
     func getRecentSearchKeywords() -> [KeywordModel]? {
-        if let data = UserDefaults.standard.value(forKey: recentKeywordsKey) as? Data {
+        if let data = getUserDefaults().value(forKey: recentKeywordsKey) as? Data {
             return try? PropertyListDecoder().decode([KeywordModel].self, from: data)
         }
         return nil
     }
     
     func setRecentSearchKeywords(_ keywords: [KeywordModel]) {
-        UserDefaults.standard.set(try? PropertyListEncoder().encode(keywords), forKey: recentKeywordsKey)
+        getUserDefaults().set(try? PropertyListEncoder().encode(keywords), forKey: recentKeywordsKey)
     }
     
 }
