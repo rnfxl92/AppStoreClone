@@ -1,5 +1,5 @@
 //
-//  API.swift
+//  SearchRepository.swift
 //  AppStore
 //
 //  Created by 박성민 on 2023/03/20.
@@ -8,13 +8,14 @@
 import Foundation
 import Alamofire
 
-final class Network {
-    static let shared = Network()
-    
-    private init() { }
+protocol SearchRepositoryProtocol {
+    func search(keyword: String, completion: @escaping (Bool, SearchResultResponse?, AFError?) -> Void)
+}
+
+final class SearchRepository: SearchRepositoryProtocol {
     
     //https://itunes.apple.com/search?media=software&entity=software&term=
-    func search(keyword: String, completion: @escaping (Bool, SearchResultModel?, AFError?) -> Void) {
+    func search(keyword: String, completion: @escaping (Bool, SearchResultResponse?, AFError?) -> Void) {
         let host = "https://itunes.apple.com"
         let path = "/search"
         let url = host + path
@@ -31,7 +32,7 @@ final class Network {
                 parameters: params,
                 encoding: URLEncoding.queryString
             )
-            .responseDecodable(of: SearchResultModel.self) { response in
+            .responseDecodable(of: SearchResultResponse.self) { response in
                 switch response.result {
                 case .success(let model):
                     completion(true, model, nil)

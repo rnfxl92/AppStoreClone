@@ -22,11 +22,13 @@ final class SearchViewModel: SearchResultViewModel {
     let viewState = PassthroughSubject<ViewState, Never>()
     let searchText = CurrentValueSubject<String, Never>("")
     private let recentSearchKeywords = CurrentValueSubject<[KeywordModel], Never>([])
+    private let repository: SearchRepositoryProtocol
     
-    private var data: SearchResultModel?
+    private var data: SearchResultResponse?
     private var cancellables = Set<AnyCancellable>()
     
-    init() {
+    init(repository: SearchRepositoryProtocol) {
+        self.repository = repository
         bind()
     }
     
@@ -46,7 +48,7 @@ final class SearchViewModel: SearchResultViewModel {
         viewState.send(.reloadResultCollectionView)
         viewState.send(.indicatorView(isShow: true))
         
-        Network.shared.search(keyword: keyword) { [weak self] success, data, error in
+        repository.search(keyword: keyword) { [weak self] success, data, error in
             self?.viewState.send(.indicatorView(isShow: false))
             if success,
                let data {

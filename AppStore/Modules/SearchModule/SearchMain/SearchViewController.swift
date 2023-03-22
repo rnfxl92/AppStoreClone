@@ -10,7 +10,7 @@ import Combine
 
 final class SearchViewController: UIViewController {
    
-    private let viewModel = SearchViewModel()
+    private let viewModel = SearchViewModel(repository: SearchRepository())
     private lazy var searchResultViewController = SearchResultViewController.initialize(viewModel: viewModel, delegate: self)
     private lazy var recentSearchAdapter = RecentSearchAdapter(dataProvider: viewModel, delegate: self)
     private lazy var searchController: UISearchController = {

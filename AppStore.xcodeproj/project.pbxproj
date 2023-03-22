@@ -12,7 +12,7 @@
 		0648701729C74782002A5132 /* SuggestSearchTableViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0648701629C74782002A5132 /* SuggestSearchTableViewAdapter.swift */; };
 		0648701A29C74DC4002A5132 /* SuggestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0648701829C74DC4002A5132 /* SuggestTableViewCell.swift */; };
 		0648701B29C74DC4002A5132 /* SuggestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0648701929C74DC4002A5132 /* SuggestTableViewCell.xib */; };
-		064AA07229C881AE00AA34A8 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064AA07129C881AE00AA34A8 /* Network.swift */; };
+		064AA07229C881AE00AA34A8 /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064AA07129C881AE00AA34A8 /* SearchRepository.swift */; };
 		064AA07529C891A800AA34A8 /* SearchResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064AA07329C891A800AA34A8 /* SearchResultCollectionViewCell.swift */; };
 		064AA07629C891A800AA34A8 /* SearchResultCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 064AA07429C891A800AA34A8 /* SearchResultCollectionViewCell.xib */; };
 		064AA07929C8A22600AA34A8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 064AA07829C8A22600AA34A8 /* SnapKit */; };
@@ -87,7 +87,7 @@
 		0648701629C74782002A5132 /* SuggestSearchTableViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestSearchTableViewAdapter.swift; sourceTree = "<group>"; };
 		0648701829C74DC4002A5132 /* SuggestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestTableViewCell.swift; sourceTree = "<group>"; };
 		0648701929C74DC4002A5132 /* SuggestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestTableViewCell.xib; sourceTree = "<group>"; };
-		064AA07129C881AE00AA34A8 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		064AA07129C881AE00AA34A8 /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
 		064AA07329C891A800AA34A8 /* SearchResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCollectionViewCell.swift; sourceTree = "<group>"; };
 		064AA07429C891A800AA34A8 /* SearchResultCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultCollectionViewCell.xib; sourceTree = "<group>"; };
 		064AA07A29C8AFD300AA34A8 /* SearchResultCollectionViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCollectionViewAdapter.swift; sourceTree = "<group>"; };
@@ -322,18 +322,18 @@
 		069D6F2829C581A800DF1FE2 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				069D6F2A29C591BE00DF1FE2 /* Model */,
-				064AA07129C881AE00AA34A8 /* Network.swift */,
+				069D6F2A29C591BE00DF1FE2 /* Entity */,
+				064AA07129C881AE00AA34A8 /* SearchRepository.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
 		};
-		069D6F2A29C591BE00DF1FE2 /* Model */ = {
+		069D6F2A29C591BE00DF1FE2 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
 				069D6F2B29C591CF00DF1FE2 /* SearchResult.swift */,
 			);
-			path = Model;
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		069D6F2D29C5981E00DF1FE2 /* SearchMain */ = {
@@ -503,7 +503,7 @@
 				069D6EFE29C5632900DF1FE2 /* Collection+.swift in Sources */,
 				0648701729C74782002A5132 /* SuggestSearchTableViewAdapter.swift in Sources */,
 				069D6F3029C59F5800DF1FE2 /* RecentSearchAdapter.swift in Sources */,
-				064AA07229C881AE00AA34A8 /* Network.swift in Sources */,
+				064AA07229C881AE00AA34A8 /* SearchRepository.swift in Sources */,
 				069D6F4029C5AB7F00DF1FE2 /* EmptyStateCollectionViewCell.swift in Sources */,
 				069D6F4329C5F76A00DF1FE2 /* SearchViewModel.swift in Sources */,
 				0648701329C73929002A5132 /* RecentHeaderView.swift in Sources */,

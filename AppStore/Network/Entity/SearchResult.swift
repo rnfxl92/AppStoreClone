@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SearchResultModel: Decodable {
+struct SearchResultResponse: Decodable {
     let resultCount: Int
     let results: [SearchResultItemModel]
 }
@@ -35,11 +35,9 @@ struct SearchResultItemModel: Decodable {
     let bundleID: String
     let trackID: Int
     let trackName: String
-//    let releaseDate: Date
     let primaryGenreName: String
     let genreIDS: [String]
     let isVppDeviceBasedLicensingEnabled: Bool
-//    let currentVersionReleaseDate: Date
     let sellerName: String
     let releaseNotes: String?
     let primaryGenreID: Int
@@ -66,10 +64,8 @@ struct SearchResultItemModel: Decodable {
         case bundleID = "bundleId"
         case trackID = "trackId"
         case trackName, primaryGenreName
-//        case releaseDate
         case genreIDS = "genreIds"
         case isVppDeviceBasedLicensingEnabled, sellerName, releaseNotes
-//        case currentVersionReleaseDate
         case primaryGenreID = "primaryGenreId"
         case currency, version, wrapperType
         case artistID = "artistId"
