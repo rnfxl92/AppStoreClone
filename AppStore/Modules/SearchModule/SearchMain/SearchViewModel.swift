@@ -13,7 +13,6 @@ final class SearchViewModel: SearchResultViewModel {
     enum ViewState {
         case reloadRecentSearchCollectionView
         case hideSuggestTableView(isHidden: Bool)
-//        case reloadSuggestTableView
         case reloadResultCollectionView
         case showAlert(message: String?)
         case indicatorView(isShow: Bool)

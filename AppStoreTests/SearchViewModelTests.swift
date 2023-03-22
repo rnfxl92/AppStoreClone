@@ -1,5 +1,5 @@
 //
-//  RecentSearchKeywordManagerTests.swift
+//  SearchViewModelTests.swift
 //  AppStoreTests
 //
 //  Created by 박성민 on 2023/03/22.
@@ -8,37 +8,28 @@
 import XCTest
 @testable import AppStore
 
-final class RecentSearchKeywordManagerTests: XCTestCase {
+final class SearchViewModelTests: XCTestCase {
     private var userDefaults: UserDefaults!
     private var session: Session!
+    private var searchViewModel: SearchViewModel!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
 
         userDefaults = UserDefaults(suiteName: #file)
         session = Session(userDefaults: userDefaults)
+        searchViewModel = SearchViewModel(repository: MockSearchRepository())
     }
 
     override func tearDownWithError() throws {
         session = nil
         userDefaults = nil
-        
+        searchViewModel = nil
+    
         try super.tearDownWithError()
     }
 
-    func test_키워드_추가_테스트() throws {
-        // GIVEN
-        RecentSearchKeywordManager.shared.removeAllRecentKeyword(completion: nil)
-        
-        // WHEN
-        let testKeyword: String = "테스트"
-        RecentSearchKeywordManager.shared.addKeyword(testKeyword)
-        
-        // THEN
-        XCTAssertTrue(RecentSearchKeywordManager.shared.getKeywords().contains(where: {$0.keyword == testKeyword}))
-    }
-
-    func test_키워드_순서갱신_테스트() throws {
+    func test_추천검색어_갯수1_테스트() throws {
         // GIVEN
         let test1 = "첫번째 테스트"
         let test2 = "두번째 테스트"
@@ -52,41 +43,43 @@ final class RecentSearchKeywordManagerTests: XCTestCase {
         RecentSearchKeywordManager.shared.addKeyword(test4)
         
         // WHEN
-        RecentSearchKeywordManager.shared.addKeyword(test1)
+        searchViewModel.getRecentKeywords()
+        searchViewModel.searchText.send("첫번째")
         
         // THEN
-        XCTAssertEqual(
-            RecentSearchKeywordManager.shared.getKeywords().first?.keyword, test1,
-            "첫번째 단어 테스트"
-        )
-        XCTAssertEqual(
-            RecentSearchKeywordManager.shared.getKeywords().last?.keyword,
-            test2,
-            "마지막 단어 테스트"
-        )
-
+        XCTAssertEqual(searchViewModel.suggestKeywords.count, 1)
     }
     
-    func test_키워드_제거_테스트() throws {
+    func test_추천검색어_갯수2_테스트() throws {
         // GIVEN
-        RecentSearchKeywordManager.shared.removeAllRecentKeyword(completion: nil)
-        
         let test1 = "첫번째 테스트"
         let test2 = "두번째 테스트"
         let test3 = "세번째 테스트"
         let test4 = "네번째 테스트"
+        let test5 = "카카오뱅크"
+        let test6 = "카카오맵"
         
+        RecentSearchKeywordManager.shared.removeAllRecentKeyword(completion: nil)
         RecentSearchKeywordManager.shared.addKeyword(test1)
         RecentSearchKeywordManager.shared.addKeyword(test2)
         RecentSearchKeywordManager.shared.addKeyword(test3)
         RecentSearchKeywordManager.shared.addKeyword(test4)
+        RecentSearchKeywordManager.shared.addKeyword(test5)
+        RecentSearchKeywordManager.shared.addKeyword(test6)
         
         // WHEN
-        RecentSearchKeywordManager.shared.removeKeyword(test3, completion: nil)
+        searchViewModel.getRecentKeywords()
+        searchViewModel.searchText.send("카카오")
         
         // THEN
-        XCTAssertNil(RecentSearchKeywordManager.shared.getKeywords().first(where: { $0.keyword == test3 }))
+        XCTAssertEqual(searchViewModel.suggestKeywords.count, 2)
+    }
+    
+
+    func test_Data_Decoding() throws {
+        searchViewModel.requestSearch("카카오뱅크")
         
+        XCTAssertGreaterThan(searchViewModel.searchResult.count, 0)
     }
 
 }

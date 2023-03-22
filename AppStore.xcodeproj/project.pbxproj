@@ -18,10 +18,13 @@
 		064AA07929C8A22600AA34A8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 064AA07829C8A22600AA34A8 /* SnapKit */; };
 		064AA07B29C8AFD400AA34A8 /* SearchResultCollectionViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064AA07A29C8AFD300AA34A8 /* SearchResultCollectionViewAdapter.swift */; };
 		064AA07D29C8BC1D00AA34A8 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064AA07C29C8BC1D00AA34A8 /* UIView+.swift */; };
-		06656D8A29CAE7490034E8A6 /* AppStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06656D8929CAE7490034E8A6 /* AppStoreTests.swift */; };
+		06656D8A29CAE7490034E8A6 /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06656D8929CAE7490034E8A6 /* SearchViewModelTests.swift */; };
 		06656D9129CAE7D60034E8A6 /* RecentSearchKeywordManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06656D9029CAE7D60034E8A6 /* RecentSearchKeywordManagerTests.swift */; };
-		06656D9429CAE8290034E8A6 /* MockUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06656D9329CAE8290034E8A6 /* MockUserDefault.swift */; };
 		06656D9629CAE9AC0034E8A6 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 06656D9529CAE9AC0034E8A6 /* SDWebImage */; };
+		06656D9829CAF4960034E8A6 /* MockSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06656D9729CAF4960034E8A6 /* MockSearchRepository.swift */; };
+		06656D9A29CAF4EA0034E8A6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 06656D9929CAF4EA0034E8A6 /* Alamofire */; };
+		06656D9C29CAF7310034E8A6 /* 카카오뱅크.json in Resources */ = {isa = PBXBuildFile; fileRef = 06656D9B29CAF7310034E8A6 /* 카카오뱅크.json */; };
+		06656D9E29CAFBCD0034E8A6 /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06656D9D29CAFBCD0034E8A6 /* ResponseError.swift */; };
 		066B677129C9DA1000C7AC3D /* SearchResultDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B677029C9DA1000C7AC3D /* SearchResultDetailViewModel.swift */; };
 		066B677329C9DA5C00C7AC3D /* SearchResultDetailCollectionViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B677229C9DA5C00C7AC3D /* SearchResultDetailCollectionViewAdapter.swift */; };
 		066B677729C9DFFD00C7AC3D /* SearchResultDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 066B677529C9DFFD00C7AC3D /* SearchResultDetailViewController.swift */; };
@@ -107,9 +110,11 @@
 		064AA07A29C8AFD300AA34A8 /* SearchResultCollectionViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCollectionViewAdapter.swift; sourceTree = "<group>"; };
 		064AA07C29C8BC1D00AA34A8 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		06656D8729CAE7490034E8A6 /* AppStoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppStoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		06656D8929CAE7490034E8A6 /* AppStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreTests.swift; sourceTree = "<group>"; };
+		06656D8929CAE7490034E8A6 /* SearchViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
 		06656D9029CAE7D60034E8A6 /* RecentSearchKeywordManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchKeywordManagerTests.swift; sourceTree = "<group>"; };
-		06656D9329CAE8290034E8A6 /* MockUserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockUserDefault.swift; sourceTree = "<group>"; };
+		06656D9729CAF4960034E8A6 /* MockSearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchRepository.swift; sourceTree = "<group>"; };
+		06656D9B29CAF7310034E8A6 /* 카카오뱅크.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "카카오뱅크.json"; sourceTree = "<group>"; };
+		06656D9D29CAFBCD0034E8A6 /* ResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseError.swift; sourceTree = "<group>"; };
 		066B677029C9DA1000C7AC3D /* SearchResultDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDetailViewModel.swift; sourceTree = "<group>"; };
 		066B677229C9DA5C00C7AC3D /* SearchResultDetailCollectionViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDetailCollectionViewAdapter.swift; sourceTree = "<group>"; };
 		066B677529C9DFFD00C7AC3D /* SearchResultDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDetailViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06656D9629CAE9AC0034E8A6 /* SDWebImage in Frameworks */,
+				06656D9A29CAF4EA0034E8A6 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,7 +203,7 @@
 		06656D8829CAE7490034E8A6 /* AppStoreTests */ = {
 			isa = PBXGroup;
 			children = (
-				06656D8929CAE7490034E8A6 /* AppStoreTests.swift */,
+				06656D8929CAE7490034E8A6 /* SearchViewModelTests.swift */,
 				06656D9029CAE7D60034E8A6 /* RecentSearchKeywordManagerTests.swift */,
 				06656D9229CAE80A0034E8A6 /* Mock */,
 			);
@@ -207,7 +213,8 @@
 		06656D9229CAE80A0034E8A6 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
-				06656D9329CAE8290034E8A6 /* MockUserDefault.swift */,
+				06656D9729CAF4960034E8A6 /* MockSearchRepository.swift */,
+				06656D9B29CAF7310034E8A6 /* 카카오뱅크.json */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -299,10 +306,10 @@
 		069D6F0729C56FAE00DF1FE2 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				069D6F0D29C57D0900DF1FE2 /* Today */,
-				069D6F0E29C57D1400DF1FE2 /* Game */,
-				069D6F0F29C57D1E00DF1FE2 /* App */,
-				069D6F1029C57D2400DF1FE2 /* Arcade */,
+				069D6F0D29C57D0900DF1FE2 /* TodayModule */,
+				069D6F0E29C57D1400DF1FE2 /* GameModule */,
+				069D6F0F29C57D1E00DF1FE2 /* AppModule */,
+				069D6F1029C57D2400DF1FE2 /* ArcadeModule */,
 				069D6F1129C57D3500DF1FE2 /* SearchModule */,
 				069D6F0A29C57B7000DF1FE2 /* TabBar */,
 			);
@@ -318,40 +325,40 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
-		069D6F0D29C57D0900DF1FE2 /* Today */ = {
+		069D6F0D29C57D0900DF1FE2 /* TodayModule */ = {
 			isa = PBXGroup;
 			children = (
 				069D6F1229C57DB600DF1FE2 /* TodayViewController.swift */,
 				069D6F1329C57DB600DF1FE2 /* TodayViewController.xib */,
 			);
-			path = Today;
+			path = TodayModule;
 			sourceTree = "<group>";
 		};
-		069D6F0E29C57D1400DF1FE2 /* Game */ = {
+		069D6F0E29C57D1400DF1FE2 /* GameModule */ = {
 			isa = PBXGroup;
 			children = (
 				069D6F1829C57DE000DF1FE2 /* GameViewController.swift */,
 				069D6F1929C57DE000DF1FE2 /* GameViewController.xib */,
 			);
-			path = Game;
+			path = GameModule;
 			sourceTree = "<group>";
 		};
-		069D6F0F29C57D1E00DF1FE2 /* App */ = {
+		069D6F0F29C57D1E00DF1FE2 /* AppModule */ = {
 			isa = PBXGroup;
 			children = (
 				069D6F1C29C57DEB00DF1FE2 /* AppViewController.swift */,
 				069D6F1D29C57DEB00DF1FE2 /* AppViewController.xib */,
 			);
-			path = App;
+			path = AppModule;
 			sourceTree = "<group>";
 		};
-		069D6F1029C57D2400DF1FE2 /* Arcade */ = {
+		069D6F1029C57D2400DF1FE2 /* ArcadeModule */ = {
 			isa = PBXGroup;
 			children = (
 				069D6F2029C57DF800DF1FE2 /* ArcadeViewController.swift */,
 				069D6F2129C57DF800DF1FE2 /* ArcadeViewController.xib */,
 			);
-			path = Arcade;
+			path = ArcadeModule;
 			sourceTree = "<group>";
 		};
 		069D6F1129C57D3500DF1FE2 /* SearchModule */ = {
@@ -369,6 +376,7 @@
 			isa = PBXGroup;
 			children = (
 				069D6F2A29C591BE00DF1FE2 /* Entity */,
+				06656D9D29CAFBCD0034E8A6 /* ResponseError.swift */,
 				064AA07129C881AE00AA34A8 /* SearchRepository.swift */,
 			);
 			path = Network;
@@ -462,6 +470,7 @@
 			name = AppStoreTests;
 			packageProductDependencies = (
 				06656D9529CAE9AC0034E8A6 /* SDWebImage */,
+				06656D9929CAF4EA0034E8A6 /* Alamofire */,
 			);
 			productName = AppStoreTests;
 			productReference = 06656D8729CAE7490034E8A6 /* AppStoreTests.xctest */;
@@ -539,6 +548,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06656D9C29CAF7310034E8A6 /* 카카오뱅크.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,8 +584,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06656D9429CAE8290034E8A6 /* MockUserDefault.swift in Sources */,
-				06656D8A29CAE7490034E8A6 /* AppStoreTests.swift in Sources */,
+				06656D9829CAF4960034E8A6 /* MockSearchRepository.swift in Sources */,
+				06656D8A29CAE7490034E8A6 /* SearchViewModelTests.swift in Sources */,
 				06656D9129CAE7D60034E8A6 /* RecentSearchKeywordManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -613,6 +623,7 @@
 				069D6F4D29C60C6000DF1FE2 /* Date+.swift in Sources */,
 				069D6F2C29C591CF00DF1FE2 /* SearchResult.swift in Sources */,
 				069D6F0429C56B9600DF1FE2 /* NibInitable.swift in Sources */,
+				06656D9E29CAFBCD0034E8A6 /* ResponseError.swift in Sources */,
 				064AA07B29C8AFD400AA34A8 /* SearchResultCollectionViewAdapter.swift in Sources */,
 				069D6F2629C57E0800DF1FE2 /* SearchViewController.swift in Sources */,
 				069D6F2229C57DF800DF1FE2 /* ArcadeViewController.swift in Sources */,
@@ -951,6 +962,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 46FDD63129C818C40060A864 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
+		};
+		06656D9929CAF4EA0034E8A6 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46FDD63429C8191E0060A864 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		46FDD63229C818C40060A864 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
