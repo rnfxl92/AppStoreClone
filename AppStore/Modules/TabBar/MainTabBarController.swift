@@ -21,6 +21,7 @@ final class MainTabBarController: UITabBarController {
         setupViewControllers()
         setupTabBar()
         addTabButtons()
+        selectedIndex = TabBarItem.search.rawValue
     }
     
     private func setupViewControllers() {
@@ -45,15 +46,7 @@ final class MainTabBarController: UITabBarController {
             tabBarItem?.tag = tab.rawValue
             tabBarItem?.image = tab.image
             tabBarItem?.selectedImage = tab.image
-                
-
-            if #available(iOS 15.0, *) {
-                tabBarItem?.title = tab.title
-            } else {
-                // 앞뒤 ' '(공백)의 이유 : iOS 13이상 15미만에서 UITabBarItem title을 bold로 적용 할 시, title에 영문자가 포함되어있을 경우 '...'처리가 됩니다.
-                tabBarItem?.title = " " + tab.title + " "
-            }
-           
+            tabBarItem?.title = tab.title
         }
     }
     
